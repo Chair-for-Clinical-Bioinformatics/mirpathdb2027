@@ -1,0 +1,87 @@
+# Checked-in configuration of the statistical robustness study
+# (scripts/validation/run_robustness_study.py). Validation only: never feeds
+# production, the deployed services, or the release statistics.
+study_id: mirpathdb-statistical-robustness-full-2026-09-15
+seed: 20260914
+replicates: 500            # uniform-null draws per (stratum x query size); pilot precision
+alphas: [0.005, 0.05]      # adjusted-P thresholds reported (stringent / significant)
+retention_alpha: 0.25      # storage bound; reported separately, never as a significance level
+
+# Extended scope: every shipped pathway family (GO BP/CC/MF, Reactome, WikiPathways),
+# every available cumulative evidence tier, all four organisms (macaque Reactome is the inferred R-MML- collection; macaque
+# HIGH/MEDIUM contain a single validated miRNA and are reported as such).
+organisms: [hsa, mmu, rno, mml]
+families: [GO_BP, GO_CC, GO_MF, REACTOME, WIKIPATHWAYS]
+tiers: [HIGH, MEDIUM, LOW]
+
+# Standing limitations recorded in results/manifest.json (run-specific ones are appended).
+limitations:
+  - "queries are reconstructed from the released target_pairs with the production normalisation; the effective universe is the annotated part of the shipped universe (enricher semantics), so numbers are reconstructions that reproduce the store, not re-runs of the release build"
+  - "the uniform null draws genes from the annotated universe; it is a calibration reference for the adjustment convention, not a model of miRNA targeting"
+  - "the degree-binned null is uninformative for nearly fixed queries (bin occupancy above ~0.8 forces most of the query); read it together with the reported occupancy, self-overlap and the pool-uniform control"
+  - "the target-union background is a sensitivity condition only and is never a production background"
+  - "production-kernel (R) runs cover the percentile and size-grid configurations; the fidelity audit and the background/degree stages use the independent kernel, whose agreement with R is audited per configuration"
+
+# Query sizes = nearest-rank percentiles of the ACTUAL per-miRNA query sizes
+# (after symbol mapping, family restriction and cumulative union). When the
+# shared cohort (miRNAs eligible in every tier of the organism x family) has at
+# least cohort_min_size members, the percentiles are taken on the cohort so the
+# tiers are compared on the same miRNAs; coverage differences are reported
+# separately in scope/strata.tsv.
+query_size_percentiles: [10, 50, 90]
+cohort_min_size: 30
+
+# Published figure examples (manuscript Figure 2; figures/fig2_interface_data.json).
+# "neuronal" = the MIR-124|3p MirGeneDB family-arm group of panel B (miR-124 is
+# the canonical neuronal miRNA); "panel_a" = the single-miRNA profile example.
+figure_examples:
+  neuronal_mir124:
+    group: "MIR-124|3p"
+    mirnas: {hsa: hsa-miR-124-3p, mmu: mmu-miR-124-3p, rno: rno-miR-124-3p, mml: mml-miR-124a-3p}
+  neuronal_mir9:
+    group: "MIR-9|5p"
+    mirnas: {hsa: hsa-miR-9-5p, mmu: mmu-miR-9-5p, rno: rno-miR-9a-5p, mml: mml-miR-9-5p}
+  neuronal_mir132:
+    group: "MIR-132|3p"
+    mirnas: {hsa: hsa-miR-132-3p, mmu: mmu-miR-132-3p, rno: rno-miR-132-3p, mml: mml-miR-132-3p}
+  neuronal_mir212:
+    group: "MIR-132|3p"
+    mirnas: {hsa: hsa-miR-212-3p, mmu: mmu-miR-212-3p, rno: rno-miR-212-3p, mml: mml-miR-212-3p}
+  neuronal_mir137:
+    group: "MIR-137|3p"
+    mirnas: {hsa: hsa-miR-137-3p, mmu: mmu-miR-137-3p, rno: rno-miR-137-3p, mml: mml-miR-137-3p}
+  panel_a:
+    mirnas: {hsa: hsa-miR-21-5p}
+
+# Prespecified figure terms (panel B columns). Reactome ids are the numeric
+# orthologous-event identity and are prefixed per organism (R-HSA-/R-MMU-/...).
+figure_terms:
+  GO_BP: ["GO:0030182", "GO:0016358", "GO:0007411", "GO:0050808", "GO:0007268", "GO:0048167", "GO:0043523", "GO:0007611"]
+  REACTOME: ["9006934", "162582", "6785807", "1280215"]
+
+# Expansion beyond the percentile pilot (added after the pilot showed that the
+# smallest real query sizes -- one to a few mapped genes, which are common in the
+# High and Medium tiers -- behave differently from large queries): an explicit
+# query-size grid, labelled "grid", drawn from the same annotation background.
+# The tier key only selects the stratum record; the uniform null does not depend
+# on the tier. One grid per organism x family, attached to its HIGH stratum.
+extra_query_sizes:
+  hsa_GO_BP_HIGH:    [1, 2, 3, 4, 5, 7, 10, 15, 20, 30, 50, 75, 100, 150, 200, 300, 500, 1000, 2000]
+  hsa_REACTOME_HIGH: [1, 2, 3, 4, 5, 7, 10, 15, 20, 30, 50, 75, 100, 150, 200, 300, 500, 1000, 2000]
+  mmu_GO_BP_HIGH:    [1, 2, 3, 4, 5, 7, 10, 15, 20, 30, 50, 75, 100, 150, 200, 300, 500, 1000, 2000]
+  rno_GO_BP_HIGH:    [1, 2, 3, 4, 5, 7, 10, 15, 20, 30, 50, 75, 100, 150, 200, 300, 500, 1000, 2000]
+
+degree_null:
+  n_bins: 10                      # degree-quantile bins over targeted genes (no pathway labels)
+  replicates: 500
+  random_focal_per_stratum: 20    # additional real queries per stratum (seeded) for aggregate summaries
+  include_focal_edges_in_degree: true
+
+# Unchanged production kernel (clusterProfiler via run_ora_batch_with_provenance).
+# rscript: null -> $MPD_RSCRIPT or Rscript on PATH. Agreement with the
+# independent numpy/scipy kernel is measured on every configuration it runs.
+r_kernel:
+  enabled: true
+  rscript: null
+  max_cores: 64
+  tolerance_rel: 1.0e-9

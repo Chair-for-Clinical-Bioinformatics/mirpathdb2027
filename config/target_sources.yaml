@@ -1,0 +1,216 @@
+# miRPathDB 3.0 — target-source registry + evidence/confidence model (machine-readable).
+#
+# Mirrors docs/target_evidence.md. The FOUR official miRNA-target-interaction
+# (MTI) sources — miRTarBase, DIANA-TarBase, TargetScan, miRDB — their
+# per-organism coverage over the production organism set, the granular internal
+# 5-tier provenance enum, and the user-facing HIGH/MEDIUM/LOW rollup. Adapter
+# seams that load these live under
+# src/mirpathdb_prod/sources/{mirtarbase,targetscan,tarbase,mirdb}.py.
+#
+# NOTE: this file does NOT redefine the organism set — that is config.yaml's
+# organisms: section (locked: hsa 9606, mmu 10090, rno 10116, mml 9544; cfa 9615
+# + gga 9031 evaluated and EXCLUDED). miRDB is one of the FOUR official target
+# sources (predicted, LOW tier with TargetScan) — NOT an organism-selection
+# anchor. Taxids here are only used to express per-source COVERAGE of that set.
+
+version: 1
+
+# Production organism set referenced by the coverage matrix below (for context
+# only; authoritative definition is config.yaml organisms:).
+organisms:
+  - { code: hsa, taxid: 9606, name: Homo sapiens, depth: full }                 # validated+CLIP+2 predictors
+  - { code: mmu, taxid: 10090, name: Mus musculus, depth: full }                # validated+CLIP+2 predictors
+  - { code: rno, taxid: 10116, name: Rattus norvegicus, depth: validated_predicted }
+  - { code: mml, taxid: 9544, name: Macaca mulatta, depth: predicted_dominant }  # TargetScan LOW (293 miRNAs); 1 DIANA validated MTI marked
+  # cfa (Canis lupus familiaris, 9615) + gga (Gallus gallus, 9031) were EVALUATED
+  # and EXCLUDED (owner 2026-06-24): an owner choice to omit, even though both
+  # TargetScan AND miRDB cover them; never in miRPathDB2 or the prototype.
+  # mml (Macaca mulatta, 9544) is RESTORED as a PREDICTED-DOMINANT production
+  # organism: substantively predicted via TargetScan (293 miRNAs, the LOW band);
+  # DIANA-TarBase v9 contributes EXACTLY ONE validated MTI (mml-miR-125b-5p ->
+  # ANGPT2), which is MARKED (HIGH = that single MTI; MEDIUM = none). miRTarBase
+  # and miRDB do NOT cover macaque.
+  #
+  # PATHWAY coverage for macaque (owner decision 2026-06-26; authoritative pathway
+  # registry is config/pathway_sources.yaml): macaque = GO (native) + Reactome
+  # (INFERRED — human R-HSA- pathways orthology-projected to R-MML- via NCBI
+  # gene_orthologs 9606<->9544); WikiPathways = NONE (no Macaca_mulatta collection).
+
+# miRNA SPECIES axis — independent of the target-gene species axis above.
+#
+# Every source in this registry is partitioned by the species of the TARGET GENE.
+# The species of the miRNA is a SEPARATE axis and was never filtered: a per-species
+# DIANA-TarBase file (and the multi-species bundles) legitimately carry miRNAs of
+# other species — and of viruses — assayed against that organism's genes. The
+# enriched matrices therefore contain, in each organism slice, rows for miRNAs that
+# are not that organism's (measured on the 2026-08-10 build, 20,219,983 rows):
+# hsa slice also holds mmu/rno/ebv/kshv/sja/gga/ptr/ssc + unprefixed "miR-145";
+# mmu slice also holds hsa/rno + rco (Ricinus communis — a PLANT); rno slice also
+# holds hsa/mmu; mml is already clean.
+#
+# The retention rule below is applied AT CONTRACT EXPORT
+# (scripts/export_frontend_contracts.py :: retain_row), never at source: the ORA
+# matrices under data/processed/enrichment/ stay untouched so no enrichment re-run
+# is implied and the excluded evidence stays recoverable. Prose mirror:
+# docs/target_evidence.md ("The miRNA species axis").
+mirna_species_policy:
+  status: owner_ruling_applied
+  applied_at: export                    # scripts/export_frontend_contracts.py
+  source_matrices_modified: false
+  rule: >-
+    For each organism slice O, retain a row iff prefix(mirna) == O; additionally
+    retain the human-infecting viral prefixes {ebv, kshv, hcmv} in the hsa slice
+    ONLY; exclude everything else. Fail-closed: an unparseable or unrecognised
+    prefix is EXCLUDED, never retained by default.
+  prefix_parse: token before the first '-', lowercased ("hsa-miR-21-5p" -> "hsa")
+  viral_retained:                        # KEPT DELIBERATELY, and explicitly labelled
+    host_organism: hsa                   # allowlist applies to the hsa slice ONLY
+    prefixes: [ebv, kshv, hcmv]          # Epstein-Barr, Kaposi's sarcoma HV, human CMV
+    rows: 11660                          # ebv 8650 + kshv 2614 + hcmv 396
+    rationale: >-
+      A virus targeting human genes in human cells is human-relevant biology, not
+      cross-species leakage. These rows are RETAINED and identified BY RULE (prefix
+      in viral_retained.prefixes) rather than by a new column, so Deliverable B's
+      columns (mirna, pathway_id, p_value, p_adjust, overlap) are unchanged and no
+      consumer has to change. Exact counts: provenance/species_exclusion_report.json.
+  excluded:
+    total_rows: 492394
+    buckets:
+      plant_in_mouse: { prefixes: [rco], rows: 21578 }      # Ricinus communis in the mmu slice
+      same_clade_leakage: { pairs: hsa<->mmu<->rno, rows: 464880 }
+      other_animals_and_malformed: { prefixes: [sja, gga, ptr, ssc, "miR-"], rows: 5936 }
+  contract_rows:
+    before: 20219983
+    after: 19727589
+  excluded_rows_preserved_at: data/processed/species_excluded/<org>/<FAMILY>_<TIER>.tsv
+  audit_report: provenance/species_exclusion_report.json
+
+# Granular INTERNAL provenance enum (kept; auditable back to source + method).
+# coverage uses: yes | strong | dominant | minor | candidate (verify) | none | low
+provenance_tiers:
+  - pred_union          # union of predicted MTIs (TargetScan OR miRDB)
+  - pred_intersection   # both predictors agree (stronger 'low+')
+  - val_strong          # miRTarBase strong/functional + DIANA-TarBase verified-strong (HIGH)
+  - val_weak            # miRTarBase weak (other experimental) + DIANA-TarBase weaker experimental
+  - clip_supported      # CLIP/AGO-supported (DIANA-TarBase) — exact tier boundary OPEN (Tuesday)
+
+# User-facing confidence rollup (DEFAULT — CONFIRM TUESDAY).
+# Auditable back to source + method via maps_from (internal tiers).
+# miRTarBase and DIANA-TarBase are PARALLEL VALIDATED resources: both feed HIGH
+# and MEDIUM (DIANA is validated + CLIP, NOT CLIP-only).
+confidence_rollup:
+  status: default_confirm_tuesday
+  bands:
+    HIGH:
+      maps_from: [val_strong]
+      definition: >-
+        miRTarBase strong/functional (reporter assay / Western blot / qPCR) +
+        DIANA-TarBase verified-strong interactions.
+    MEDIUM:
+      maps_from: [val_weak, clip_supported]
+      definition: >-
+        miRTarBase weak (other experimental) + DIANA-TarBase CLIP / weaker
+        experimental.
+      open_question: >-
+        Exact verified-strong vs CLIP/weaker tier boundary (and whether
+        clip_supported gets its own band) is OPEN — flagged for Tuesday.
+    LOW:
+      maps_from: [pred_union, pred_intersection]
+      definition: >-
+        TargetScan + miRDB predicted (union) — everywhere. pred_intersection
+        (both predictors agree) may be surfaced as a stronger 'low+'.
+      note: >-
+        LOW = TargetScan + miRDB for hsa/mmu/rno; for macaque (mml) it is
+        TargetScan only (miRDB does not cover macaque) — and LOW is macaque's
+        SUBSTANTIVE band (293 miRNAs). Macaque's HIGH band is a SINGLE marked
+        validated MTI (mml-miR-125b-5p -> ANGPT2) from DIANA-TarBase v9; its
+        MEDIUM band is empty. Macaque is thus predicted-dominant, not broadly
+        validated.
+
+# The four MTI sources + per-organism coverage of the production set.
+target_sources:
+  - id: mirtarbase
+    name: miRTarBase
+    version: "9.0"                       # Huang et al. 2022
+    kind: validated
+    emits_tiers: [val_strong, val_weak]
+    adapter: mirpathdb_prod.sources.mirtarbase
+    redistribution: academic
+    coverage:                            # per-species MTI xlsx
+      hsa: dominant
+      mmu: strong
+      rno: yes                           # validated; 3rd species
+      mml: none                          # macaque: no miRTarBase per-species file (its validated source is DIANA-TarBase)
+      cfa: excluded                      # evaluated+excluded; only a thin/tail set
+      gga: excluded                      # evaluated+excluded; only a thin/tail set
+    notes: >-
+      Validated resource feeding HIGH (strong/functional) + MEDIUM (weak),
+      parallel to DIANA-TarBase.
+
+  - id: targetscan
+    name: TargetScan
+    version: v8                          # vert80 default predictions
+    kind: predicted
+    emits_tiers: [pred_union, pred_intersection]
+    adapter: mirpathdb_prod.sources.targetscan
+    redistribution: academic
+    conserved_site_authority: true       # source of the conserved target-SITE axis
+    coverage:                            # one multi-species file keyed by Gene Tax ID
+      hsa: yes                           # anchor
+      mmu: yes
+      rno: yes                           # conserved
+      mml: yes                           # macaque — predicted (LOW, 293 miRNAs); macaque's SUBSTANTIVE evidence band
+      cfa: excluded                      # covered by TargetScan, but dog owner-omitted
+      gga: excluded                      # covered by TargetScan, but chicken owner-omitted
+    notes: >-
+      Human-anchored, conserved-site, broad-vertebrate; covers
+      human/mouse/rat/dog/chicken/macaque. Provides macaque's PREDICTED (LOW)
+      evidence (293 miRNAs) — macaque's SUBSTANTIVE evidence band. Macaque's only
+      validated evidence is a SINGLE DIANA-TarBase v9 MTI (marked), so macaque is
+      predicted-dominant.
+
+  - id: diana_tarbase
+    name: DIANA-TarBase
+    version: v9
+    kind: validated_and_clip            # verified interactions + CLIP (parallel to miRTarBase)
+    emits_tiers: [val_strong, val_weak, clip_supported]
+    tier_contribution: [HIGH, MEDIUM]
+    adapter: mirpathdb_prod.sources.tarbase
+    redistribution: academic
+    coverage:                            # 24-species resource; macaque VOLUME = 1 validated MTI
+      hsa: yes
+      mmu: yes
+      rno: yes                           # rat ~1125 MTIs / 26 miRNAs (Other_species bundle)
+      mml: 1 validated MTI               # macaque: EXACTLY ONE validated MTI (mml-miR-125b-5p->ANGPT2); marked, not "validated" broadly
+      cfa: excluded                      # dog owner-omitted (not a DIANA coverage limit)
+      gga: excluded                      # chicken owner-omitted (not a DIANA coverage limit)
+    notes: >-
+      PARALLEL VALIDATED resource to miRTarBase (verified interactions + CLIP,
+      NOT CLIP-only) — feeds BOTH HIGH and MEDIUM. The resource genuinely covers
+      24 species. Per-organism VOLUME differs sharply: rat carries ~1125 MTIs (26
+      miRNAs) in the Other_species bundle, but MACAQUE carries EXACTLY ONE
+      validated MTI (mml-miR-125b-5p -> ANGPT2, a Luciferase Reporter Assay). That
+      lone macaque MTI is MARKED (it populates macaque's HIGH band only); macaque
+      is otherwise predicted-dominant (TargetScan LOW).
+
+  - id: mirdb
+    name: miRDB
+    version: v6.0
+    kind: predicted
+    emits_tiers: [pred_union, pred_intersection]
+    adapter: mirpathdb_prod.sources.mirdb
+    redistribution: academic
+    coverage:                            # ships cfa, gga, hsa, mmu, rno (NOT mml)
+      hsa: yes
+      mmu: yes
+      rno: yes
+      mml: none                          # macaque NOT shipped by miRDB (5 species: hsa/mmu/rat/dog/chicken)
+      cfa: excluded                      # dog: miRDB ships it, but owner EXCLUDED dog from production
+      gga: excluded                      # chicken: miRDB ships it, but owner EXCLUDED chicken from production
+    notes: >-
+      One of the FOUR official target sources; a sanctioned, free/redistributable
+      predictor in the LOW tier (with TargetScan). Its MirTarget model is fit on
+      miRNA-overexpression studies and is heavily used — the rationale for its
+      inclusion. NOT an organism-selection anchor: miRDB ships dog/chicken, but
+      the owner EXCLUDED them; among production organisms miRDB covers hsa/mmu/rno
+      (NOT macaque).

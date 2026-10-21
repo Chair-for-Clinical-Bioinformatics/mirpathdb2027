@@ -1,0 +1,189 @@
+# miRPathDB 3.0 production-build configuration.
+#
+# All filesystem paths are configurable here so no absolute user paths are
+# hard-coded in committed source. Paths may be absolute or relative to the
+# repository root. Override locally with config.local.yaml (gitignored).
+
+# ---------------------------------------------------------------------------
+# Reference locations (READ-ONLY from this repo's perspective).
+# ---------------------------------------------------------------------------
+paths:
+  # The deprecated v3 prototype snapshot (reference/backup only; never imported).
+  prototype_dir: ../mirpathdb3
+  # miRPathDB2 offline reference extracted from the dragon backup
+  # (version_2/extracted/ holds hsa_raw/ and mmu_raw/ p_value_matrices only).
+  dragon_backup_v2_dir: data/raw/mirpathdb2/version_2
+  # The OUP/NAR manuscript repo (for cross-checking published counts/claims).
+  paper_dir: ../mirpathdb-paper
+
+  # ---------------------------------------------------------------------------
+  # Working locations OWNED by this repo.
+  # ---------------------------------------------------------------------------
+  data_dir: data
+  data_raw_dir: data/raw
+  data_interim_dir: data/interim
+  data_processed_dir: data/processed
+  validation_dir: validation
+  provenance_dir: provenance
+
+  # Build cache holding the cached raw source downloads (miRTarBase / DIANA /
+  # TargetScan / miRDB) + the WikiPathways GMT cache + the NCBI gene_orthologs
+  # snapshot. The committed default is /tmp/mpd-data; override per host in
+  # config.local.yaml (gitignored). The run scripts thread this through instead
+  # of hard-coding /tmp/mpd-data so the build is portable.
+  source_cache_dir: /tmp/mpd-data
+
+# ---------------------------------------------------------------------------
+# Production organism set (LOCKED DECISION — owner 2026-06-24).
+# EXACTLY 4 species: the miRPathDB2 floor (hsa, mmu) plus two approved
+# native-coverage additions (rno, rat — validated+predicted; mml, rhesus macaque
+# — predicted-dominant with a lone validated MTI marked). Dog (cfa) and
+# chicken (gga) were EVALUATED and EXCLUDED (see `evaluated_excluded` below).
+# Compare by canonical_tax_id first, then scientific_name + synonyms.
+#
+# Per-organism flags:
+#   in_mirpathdb2 — true only for the miRPathDB2 floor (hsa, mmu).
+#   depth_class   — target-evidence depth:
+#                     full                 = validated + CLIP + 2 predictors
+#                     validated_predicted  = native validated + predicted
+#                     predicted_dominant   = substantively predicted (TargetScan;
+#                                            LOW tier) with a lone validated MTI
+#                                            MARKED (not buried) — see mml below
+#                     predicted_only       = predicted only (TargetScan; LOW tier)
+#   native_sources — sources that natively cover this organism's targets.
+# ---------------------------------------------------------------------------
+organisms:
+  - code: hsa
+    scientific_name: Homo sapiens
+    common_name: Human
+    canonical_tax_id: 9606
+    is_beta: false
+    in_mirpathdb2: true            # miRPathDB2 floor organism
+    depth_class: full
+    native_sources: [miRTarBase, DIANA-TarBase, TargetScan, miRDB]
+  - code: mmu
+    scientific_name: Mus musculus
+    common_name: Mouse
+    canonical_tax_id: 10090
+    is_beta: false
+    in_mirpathdb2: true            # miRPathDB2 floor organism
+    depth_class: full
+    native_sources: [miRTarBase, DIANA-TarBase, TargetScan, miRDB]
+  - code: rno
+    scientific_name: Rattus norvegicus
+    common_name: Rat
+    canonical_tax_id: 10116
+    is_beta: false
+    in_mirpathdb2: false           # approved addition (native validated + predicted)
+    depth_class: validated_predicted
+    native_sources: [miRTarBase, TargetScan, miRDB]
+  - code: mml
+    scientific_name: Macaca mulatta
+    common_name: Rhesus macaque
+    canonical_tax_id: 9544
+    is_beta: false
+    # approved addition — predicted-dominant; lone validated MTI marked
+    in_mirpathdb2: false
+    depth_class: predicted_dominant
+    # Macaque is SUBSTANTIVELY PREDICTED (TargetScan, 293 miRNAs — the LOW band);
+    # DIANA-TarBase v9 contributes EXACTLY ONE validated MTI for macaque, which is
+    # MARKED below (surfaced, not hidden) rather than buried under a "validated"
+    # label. Tier rollup: HIGH = the single marked validated MTI only; MEDIUM =
+    # none; LOW = TargetScan predicted (293 miRNAs). miRTarBase and miRDB do NOT
+    # cover macaque. (DIANA-TarBase v9 still genuinely covers 24 species — only
+    # macaque's VOLUME of validated evidence is one interaction.)
+    native_sources: [diana_tarbase, targetscan]
+    lone_validated_mti: "mml-miR-125b-5p -> ANGPT2"   # source: DIANA-TarBase v9
+    validated_mti_count: 1
+    # Pathway coverage (owner decision 2026-06-26):
+    #   go            = native  (org.Mmu.eg.db GO_BP/CC/MF)
+    #   reactome      = INFERRED — orthology-projected from human R-HSA- pathways
+    #                   via NCBI gene_orthologs 9606<->9544 (R-MML-), LIMITED. Reactome
+    #                   ships NO curated macaque pathways (0 R-MML- in reactome.db /
+    #                   Ensembl2Reactome); it lists Macaca mulatta as orthology-inferred,
+    #                   which this build replicates. NOT curated.
+    #   wikipathways  = NONE — no Macaca_mulatta GMT; not in rWikiPathways::listOrganisms.
+    pathway_coverage:
+      go: native
+      reactome: inferred       # orthology-projected from human (R-MML-); limited, not curated
+      wikipathways: none       # no macaque WikiPathways collection
+
+# ---------------------------------------------------------------------------
+# Evaluated and EXCLUDED organisms (owner decision 2026-06-24).
+# Dog (cfa) and chicken (gga) were EVALUATED for the production set and EXCLUDED.
+# They ARE covered by native sources (both TargetScan AND miRDB ship them), so
+# the exclusion is an OWNER CHOICE to omit them, NOT a lack of native evidence.
+# They were NEVER in miRPathDB2 nor in the v3 prototype, so they belong in
+# NEITHER the approved_extensions nor the approved_removals allowlist below —
+# they are simply not production organisms. This note records WHY they were
+# excluded so the decision is auditable.
+# ---------------------------------------------------------------------------
+evaluated_excluded:
+  - code: cfa
+    scientific_name: Canis lupus familiaris
+    common_name: Dog
+    canonical_tax_id: 9615
+    in_prototype: false
+    in_mirpathdb2: false
+    rationale: >-
+      Evaluated and EXCLUDED (owner 2026-06-24) — an owner choice to OMIT, not a
+      lack of native evidence: dog IS covered by native sources (TargetScan +
+      miRDB both ship it). Not in miRPathDB2 nor the prototype, so neither an
+      approved extension nor an approved removal — simply not a production
+      organism.
+  - code: gga
+    scientific_name: Gallus gallus
+    common_name: Chicken
+    canonical_tax_id: 9031
+    in_prototype: false
+    in_mirpathdb2: false
+    rationale: >-
+      Evaluated and EXCLUDED (owner 2026-06-24) — an owner choice to OMIT, not a
+      lack of native evidence: chicken IS covered by native sources (TargetScan +
+      miRDB both ship it). Not in miRPathDB2 nor the prototype, so neither an
+      approved extension nor an approved removal — simply not a production
+      organism.
+
+# ---------------------------------------------------------------------------
+# Organism-parity gate policy — "no-loss FLOOR + expand" model.
+# The gate is config-driven (never silently hard-coded):
+#   hard_floor          — taxids that MUST be present in production (the
+#                         miRPathDB2 floor: human + mouse). Missing one => FAIL.
+#   approved_extensions — additions beyond the floor that are allowed, each
+#                         justified by the organism availability matrix (RAT +
+#                         MACAQUE — rat has native validated + predicted target
+#                         coverage; macaque is PREDICTED-DOMINANT (TargetScan,
+#                         293 miRNAs) with EXACTLY ONE validated MTI from
+#                         DIANA-TarBase v9 marked (mml-miR-125b-5p->ANGPT2)).
+#   approved_removals   — old-prototype organisms deliberately NOT carried
+#                         forward. EMPTY now: the prototype carried mml (rhesus),
+#                         and production RE-ADDS it as an approved extension, so
+#                         nothing is removed.
+# Dog (9615) and chicken (9031) are EVALUATED + EXCLUDED (see evaluated_excluded
+# above): never in miRPathDB2 or the prototype, so they appear in NEITHER
+# allowlist — they are simply not production organisms.
+# FAIL if: a floor organism is missing; OR a production organism is neither
+# floor nor an approved_extension; OR an old-prototype organism is missing from
+# production AND not an approved_removal.
+validation:
+  organism_parity:
+    hard_floor:
+      - 9606   # Homo sapiens (human) — miRPathDB2 floor
+      - 10090  # Mus musculus (mouse) — miRPathDB2 floor
+    approved_extensions:
+      - 10116  # Rattus norvegicus (rat) — native validated (miRTarBase) + predicted (miRDB + TargetScan)
+      - 9544   # Macaca mulatta (rhesus macaque) — predicted-dominant (TargetScan, 293 miRNAs); DIANA-TarBase v9 contributes ONE validated MTI (mml-miR-125b-5p->ANGPT2), marked
+    approved_removals: []  # EMPTY — macaque is restored as an approved extension, not removed
+
+# ---------------------------------------------------------------------------
+# GO gene-set construction — ancestor propagation mode.
+#   all    = PROPAGATED (GOALL / ONTOLOGYALL): a gene annotated to a child term
+#            also counts toward every ancestor term (the GO true-path rule).
+#            This is canonical GO over-representation analysis (matches
+#            clusterProfiler::enrichGO, GeneTrail2, topGO) and is the DEFAULT.
+#   direct = DIRECT annotations only (GO / ONTOLOGY) — under-populates higher-level
+#            GO terms; kept for debugging / comparison, NOT recommended for release.
+# The chosen mode is recorded in each GO build's provenance (go_propagation) and in
+# the exported pathway_labels source_version.
+# ---------------------------------------------------------------------------
+go_propagation: all

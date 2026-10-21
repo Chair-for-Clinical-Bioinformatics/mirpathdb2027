@@ -1,0 +1,1218 @@
+{
+  "build": "production_go_ora",
+  "note": "Real GO gene-sets (org.*.eg.db); NO miRPathDB2 ground truth for rno/mml.",
+  "last_run_organisms": [
+    "mml",
+    "rno"
+  ],
+  "last_run_tiers": [
+    "HIGH",
+    "MEDIUM",
+    "LOW"
+  ],
+  "last_run_wall_s": 727.7,
+  "organisms": [
+    {
+      "organism": "rno",
+      "taxid": 10116,
+      "org_db_package": "org.Rn.eg.db",
+      "go_provenance": {
+        "org_db_package": "org.Rn.eg.db",
+        "org_db_version": "3.22.0",
+        "go_db_version": "3.22.0",
+        "r_version": "4.5.3",
+        "go_columns": "GOALL/ONTOLOGYALL",
+        "n_pairs": "2009877",
+        "go_propagation": "all"
+      },
+      "cp_provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "detected_cores": "128",
+        "n_gene_sets": "149",
+        "n_worker_errors": "0",
+        "worker_error_examples": ""
+      },
+      "per_source_census": {
+        "mirtarbase": {
+          "n_rows": 1384,
+          "n_mirnas_strong": 144,
+          "n_mirnas_weak": 239
+        },
+        "diana_tarbase": {
+          "n_rows": 1125,
+          "n_mirnas_high": 23,
+          "n_mirnas_medium": 11,
+          "tier_rule": "HIGH = confidence==1 AND gene-specific assay (method not in CLIP_METHODS and not in KNOWN_OTHER_METHODS); else MEDIUM"
+        },
+        "targetscan": {
+          "n_rows": 138997,
+          "n_mirnas": 277
+        },
+        "mirdb": {
+          "n_rows": 200619,
+          "n_mirnas": 764,
+          "n_mapped_pairs": 198709,
+          "n_unmapped_pairs": 1910
+        }
+      },
+      "per_tier_raw": {
+        "HIGH": {
+          "n_mirnas": 150,
+          "n_genes": 291,
+          "n_pairs": 446
+        },
+        "MEDIUM": {
+          "n_mirnas": 240,
+          "n_genes": 1334,
+          "n_pairs": 1731
+        },
+        "LOW": {
+          "n_mirnas": 764,
+          "n_genes": 22872,
+          "n_pairs": 310576
+        }
+      },
+      "symbol_normalization": {
+        "HIGH": {
+          "n_kept_pairs": 437,
+          "n_dropped_pairs": 9
+        },
+        "MEDIUM": {
+          "n_kept_pairs": 1625,
+          "n_dropped_pairs": 106
+        },
+        "LOW": {
+          "n_kept_pairs": 291605,
+          "n_dropped_pairs": 18971
+        }
+      },
+      "census_notes": {
+        "mirdb": "1910 RefSeq targets dropped (no SYMBOL in org.db); 198709 mapped"
+      },
+      "cells": [
+        {
+          "organism": "rno",
+          "tier": "HIGH",
+          "family": "GO_BP",
+          "n_mirnas": 149,
+          "n_go_terms_scored": 7060,
+          "n_go_terms_total": 15100,
+          "n_universe": 21697,
+          "n_significant_rows": 78130,
+          "elapsed_s": 33.38,
+          "output": "data/processed/enrichment/rno/GO_BP_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/GO_BP_HIGH.tsv"
+        },
+        {
+          "organism": "rno",
+          "tier": "HIGH",
+          "family": "GO_CC",
+          "n_mirnas": 149,
+          "n_go_terms_scored": 666,
+          "n_go_terms_total": 1984,
+          "n_universe": 22570,
+          "n_significant_rows": 5472,
+          "elapsed_s": 14.08,
+          "output": "data/processed/enrichment/rno/GO_CC_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/GO_CC_HIGH.tsv"
+        },
+        {
+          "organism": "rno",
+          "tier": "HIGH",
+          "family": "GO_MF",
+          "n_mirnas": 149,
+          "n_go_terms_scored": 1131,
+          "n_go_terms_total": 5014,
+          "n_universe": 18597,
+          "n_significant_rows": 7140,
+          "elapsed_s": 11.95,
+          "output": "data/processed/enrichment/rno/GO_MF_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/GO_MF_HIGH.tsv"
+        },
+        {
+          "organism": "rno",
+          "tier": "MEDIUM",
+          "family": "GO_BP",
+          "n_mirnas": 260,
+          "n_go_terms_scored": 9572,
+          "n_go_terms_total": 15100,
+          "n_universe": 21697,
+          "n_significant_rows": 135806,
+          "elapsed_s": 52.42,
+          "output": "data/processed/enrichment/rno/GO_BP_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/GO_BP_MEDIUM.tsv"
+        },
+        {
+          "organism": "rno",
+          "tier": "MEDIUM",
+          "family": "GO_CC",
+          "n_mirnas": 260,
+          "n_go_terms_scored": 1084,
+          "n_go_terms_total": 1984,
+          "n_universe": 22570,
+          "n_significant_rows": 9365,
+          "elapsed_s": 17.66,
+          "output": "data/processed/enrichment/rno/GO_CC_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/GO_CC_MEDIUM.tsv"
+        },
+        {
+          "organism": "rno",
+          "tier": "MEDIUM",
+          "family": "GO_MF",
+          "n_mirnas": 260,
+          "n_go_terms_scored": 2056,
+          "n_go_terms_total": 5014,
+          "n_universe": 18597,
+          "n_significant_rows": 12345,
+          "elapsed_s": 14.91,
+          "output": "data/processed/enrichment/rno/GO_MF_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/GO_MF_MEDIUM.tsv"
+        },
+        {
+          "organism": "rno",
+          "tier": "LOW",
+          "family": "GO_BP",
+          "n_mirnas": 800,
+          "n_go_terms_scored": 14818,
+          "n_go_terms_total": 15100,
+          "n_universe": 21697,
+          "n_significant_rows": 1183718,
+          "elapsed_s": 245.61,
+          "output": "data/processed/enrichment/rno/GO_BP_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/GO_BP_LOW.tsv"
+        },
+        {
+          "organism": "rno",
+          "tier": "LOW",
+          "family": "GO_CC",
+          "n_mirnas": 800,
+          "n_go_terms_scored": 1935,
+          "n_go_terms_total": 1984,
+          "n_universe": 22570,
+          "n_significant_rows": 151504,
+          "elapsed_s": 49.97,
+          "output": "data/processed/enrichment/rno/GO_CC_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/GO_CC_LOW.tsv"
+        },
+        {
+          "organism": "rno",
+          "tier": "LOW",
+          "family": "GO_MF",
+          "n_mirnas": 800,
+          "n_go_terms_scored": 4824,
+          "n_go_terms_total": 5014,
+          "n_universe": 18597,
+          "n_significant_rows": 193240,
+          "elapsed_s": 48.26,
+          "output": "data/processed/enrichment/rno/GO_MF_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/GO_MF_LOW.tsv"
+        }
+      ],
+      "sanity": {
+        "tier": "HIGH",
+        "family": "GO_BP",
+        "mirna": "rno-miR-1-3p",
+        "n_targets": 21,
+        "top_go_terms": [
+          {
+            "go_id": "GO:0090257",
+            "pvalue": 1.02403033122944e-15,
+            "p_adjust": 2.34298139785297e-12,
+            "overlap": 11
+          },
+          {
+            "go_id": "GO:0060047",
+            "pvalue": 1.08705740265441e-14,
+            "p_adjust": 1.23021821546459e-11,
+            "overlap": 10
+          },
+          {
+            "go_id": "GO:0003015",
+            "pvalue": 1.61304835943784e-14,
+            "p_adjust": 1.23021821546459e-11,
+            "overlap": 10
+          },
+          {
+            "go_id": "GO:0051239",
+            "pvalue": 2.86204921587218e-14,
+            "p_adjust": 1.63709215147889e-11,
+            "overlap": 19
+          },
+          {
+            "go_id": "GO:0008015",
+            "pvalue": 3.8812144706575e-14,
+            "p_adjust": 1.77604374177287e-11,
+            "overlap": 12
+          },
+          {
+            "go_id": "GO:0003013",
+            "pvalue": 6.69326642151398e-14,
+            "p_adjust": 2.552365595404e-11,
+            "overlap": 12
+          },
+          {
+            "go_id": "GO:0008016",
+            "pvalue": 1.81785413229462e-13,
+            "p_adjust": 5.94178607812869e-11,
+            "overlap": 9
+          },
+          {
+            "go_id": "GO:0044057",
+            "pvalue": 2.23984405671895e-13,
+            "p_adjust": 6.2196120422763e-11,
+            "overlap": 12
+          }
+        ]
+      },
+      "organism_wall_s": 561.1
+    },
+    {
+      "organism": "mml",
+      "taxid": 9544,
+      "org_db_package": "org.Mmu.eg.db",
+      "go_provenance": {
+        "org_db_package": "org.Mmu.eg.db",
+        "org_db_version": "3.22.0",
+        "go_db_version": "3.22.0",
+        "r_version": "4.5.3",
+        "go_columns": "GOALL/ONTOLOGYALL",
+        "n_pairs": "1022001",
+        "go_propagation": "all"
+      },
+      "cp_provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "detected_cores": "128",
+        "n_gene_sets": "1",
+        "n_worker_errors": "0",
+        "worker_error_examples": ""
+      },
+      "per_source_census": {
+        "diana_tarbase": {
+          "n_rows": 1,
+          "n_mirnas_high": 1,
+          "n_mirnas_medium": 0,
+          "tier_rule": "HIGH = confidence==1 AND gene-specific assay (method not in CLIP_METHODS and not in KNOWN_OTHER_METHODS); else MEDIUM"
+        },
+        "targetscan": {
+          "n_rows": 201533,
+          "n_mirnas": 293
+        }
+      },
+      "per_tier_raw": {
+        "HIGH": {
+          "n_mirnas": 1,
+          "n_genes": 1,
+          "n_pairs": 1
+        },
+        "MEDIUM": {
+          "n_mirnas": 0,
+          "n_genes": 0,
+          "n_pairs": 0
+        },
+        "LOW": {
+          "n_mirnas": 293,
+          "n_genes": 12148,
+          "n_pairs": 179142
+        }
+      },
+      "symbol_normalization": {
+        "HIGH": {
+          "n_kept_pairs": 1,
+          "n_dropped_pairs": 0
+        },
+        "MEDIUM": {
+          "n_kept_pairs": 0,
+          "n_dropped_pairs": 0
+        },
+        "LOW": {
+          "n_kept_pairs": 148935,
+          "n_dropped_pairs": 30207
+        }
+      },
+      "census_notes": {},
+      "cells": [
+        {
+          "organism": "mml",
+          "tier": "HIGH",
+          "family": "GO_BP",
+          "n_mirnas": 1,
+          "n_go_terms_scored": 92,
+          "n_go_terms_total": 12536,
+          "n_universe": 12363,
+          "n_significant_rows": 70,
+          "elapsed_s": 9.03,
+          "output": "data/processed/enrichment/mml/GO_BP_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/mml/GO_BP_HIGH.tsv"
+        },
+        {
+          "organism": "mml",
+          "tier": "HIGH",
+          "family": "GO_CC",
+          "n_mirnas": 1,
+          "n_go_terms_scored": 4,
+          "n_go_terms_total": 1725,
+          "n_universe": 13614,
+          "n_significant_rows": 2,
+          "elapsed_s": 6.63,
+          "output": "data/processed/enrichment/mml/GO_CC_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/mml/GO_CC_HIGH.tsv"
+        },
+        {
+          "organism": "mml",
+          "tier": "HIGH",
+          "family": "GO_MF",
+          "n_mirnas": 1,
+          "n_go_terms_scored": 14,
+          "n_go_terms_total": 4180,
+          "n_universe": 11983,
+          "n_significant_rows": 11,
+          "elapsed_s": 6.5,
+          "output": "data/processed/enrichment/mml/GO_MF_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/mml/GO_MF_HIGH.tsv"
+        },
+        {
+          "organism": "mml",
+          "tier": "MEDIUM",
+          "family": "GO_BP",
+          "n_mirnas": 1,
+          "n_go_terms_scored": 92,
+          "n_go_terms_total": 12536,
+          "n_universe": 12363,
+          "n_significant_rows": 70,
+          "elapsed_s": 8.9,
+          "output": "data/processed/enrichment/mml/GO_BP_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/mml/GO_BP_MEDIUM.tsv"
+        },
+        {
+          "organism": "mml",
+          "tier": "MEDIUM",
+          "family": "GO_CC",
+          "n_mirnas": 1,
+          "n_go_terms_scored": 4,
+          "n_go_terms_total": 1725,
+          "n_universe": 13614,
+          "n_significant_rows": 2,
+          "elapsed_s": 6.57,
+          "output": "data/processed/enrichment/mml/GO_CC_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/mml/GO_CC_MEDIUM.tsv"
+        },
+        {
+          "organism": "mml",
+          "tier": "MEDIUM",
+          "family": "GO_MF",
+          "n_mirnas": 1,
+          "n_go_terms_scored": 14,
+          "n_go_terms_total": 4180,
+          "n_universe": 11983,
+          "n_significant_rows": 11,
+          "elapsed_s": 6.51,
+          "output": "data/processed/enrichment/mml/GO_MF_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/mml/GO_MF_MEDIUM.tsv"
+        },
+        {
+          "organism": "mml",
+          "tier": "LOW",
+          "family": "GO_BP",
+          "n_mirnas": 293,
+          "n_go_terms_scored": 11587,
+          "n_go_terms_total": 12536,
+          "n_universe": 12363,
+          "n_significant_rows": 127035,
+          "elapsed_s": 56.85,
+          "output": "data/processed/enrichment/mml/GO_BP_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/mml/GO_BP_LOW.tsv"
+        },
+        {
+          "organism": "mml",
+          "tier": "LOW",
+          "family": "GO_CC",
+          "n_mirnas": 293,
+          "n_go_terms_scored": 1580,
+          "n_go_terms_total": 1725,
+          "n_universe": 13614,
+          "n_significant_rows": 15648,
+          "elapsed_s": 19.2,
+          "output": "data/processed/enrichment/mml/GO_CC_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/mml/GO_CC_LOW.tsv"
+        },
+        {
+          "organism": "mml",
+          "tier": "LOW",
+          "family": "GO_MF",
+          "n_mirnas": 293,
+          "n_go_terms_scored": 3577,
+          "n_go_terms_total": 4180,
+          "n_universe": 11983,
+          "n_significant_rows": 25260,
+          "elapsed_s": 20.45,
+          "output": "data/processed/enrichment/mml/GO_MF_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/mml/GO_MF_LOW.tsv"
+        }
+      ],
+      "sanity": {
+        "tier": "LOW",
+        "family": "GO_BP",
+        "mirna": "mml-miR-1-3p",
+        "n_targets": 726,
+        "top_go_terms": [
+          {
+            "go_id": "GO:0050789",
+            "pvalue": 1.74692917799091e-11,
+            "p_adjust": 8.88662872843974e-08,
+            "overlap": 447
+          },
+          {
+            "go_id": "GO:0050794",
+            "pvalue": 1.2912404547563e-10,
+            "p_adjust": 3.28427009667264e-07,
+            "overlap": 429
+          },
+          {
+            "go_id": "GO:0019222",
+            "pvalue": 5.49979015094813e-10,
+            "p_adjust": 9.32581083262438e-07,
+            "overlap": 256
+          },
+          {
+            "go_id": "GO:0065007",
+            "pvalue": 1.70262499622674e-09,
+            "p_adjust": 2.16531333895135e-06,
+            "overlap": 450
+          },
+          {
+            "go_id": "GO:0051252",
+            "pvalue": 7.18465809610896e-09,
+            "p_adjust": 6.17361868057449e-06,
+            "overlap": 170
+          },
+          {
+            "go_id": "GO:0009889",
+            "pvalue": 7.28164184852505e-09,
+            "p_adjust": 6.17361868057449e-06,
+            "overlap": 223
+          },
+          {
+            "go_id": "GO:0080090",
+            "pvalue": 9.24418432711383e-09,
+            "p_adjust": 6.71788081028972e-06,
+            "overlap": 211
+          },
+          {
+            "go_id": "GO:0060255",
+            "pvalue": 1.29630932577393e-08,
+            "p_adjust": 7.98900314349423e-06,
+            "overlap": 233
+          }
+        ]
+      },
+      "organism_wall_s": 166.3
+    }
+  ],
+  "emitted_contract": {
+    "generated_at": "2026-08-30T22:01:34Z",
+    "contract_version": "1",
+    "derived_from": "data/processed/enrichment/production_manifest.json",
+    "derived_from_sha256": "46fb6af577b76ac962b243de418bd45071984e353208291113c6d6f400f322af",
+    "significant_root": "data/processed/enrichment_significant",
+    "fdr_retained_max": 0.25,
+    "fdr_significant_max": 0.05,
+    "species_policy_applied": true,
+    "cells": [
+      {
+        "organism": "hsa",
+        "family": "GO_BP",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/hsa/GO_BP_HIGH.tsv",
+        "rows": 666059,
+        "bytes": 44533348,
+        "sha256": "3c49f9534bdea9e8f065cae5263885850b8d1eb1d061dbb783034b350b61a277",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "hsa",
+        "family": "GO_BP",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/hsa/GO_BP_LOW.tsv",
+        "rows": 2457686,
+        "bytes": 167366904,
+        "sha256": "700e6b3b05114623d48aaf23abea11be96c8f8825e4eb5c1a225125ec64a3c0e",
+        "rows_excluded_species": 14281,
+        "rows_retained_viral": 3347,
+        "species_filtered": true
+      },
+      {
+        "organism": "hsa",
+        "family": "GO_BP",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/hsa/GO_BP_MEDIUM.tsv",
+        "rows": 2120657,
+        "bytes": 143181512,
+        "sha256": "4821c70dc81d30b82beb67213be673f76dbf4f58da6581467d888f16901db1aa",
+        "rows_excluded_species": 14281,
+        "rows_retained_viral": 3347,
+        "species_filtered": true
+      },
+      {
+        "organism": "hsa",
+        "family": "GO_CC",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/hsa/GO_CC_HIGH.tsv",
+        "rows": 41496,
+        "bytes": 2763166,
+        "sha256": "79853f0cfc799336551f0ed23002190410514943b0da82a12a74ff9842340404",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "hsa",
+        "family": "GO_CC",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/hsa/GO_CC_LOW.tsv",
+        "rows": 485531,
+        "bytes": 33187120,
+        "sha256": "c81e869990919c6d6bb7cea722de5a70f348cb3b1c51f9fe78a03ac9b206b7aa",
+        "rows_excluded_species": 846,
+        "rows_retained_viral": 644,
+        "species_filtered": true
+      },
+      {
+        "organism": "hsa",
+        "family": "GO_CC",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/hsa/GO_CC_MEDIUM.tsv",
+        "rows": 416054,
+        "bytes": 28215836,
+        "sha256": "284593f1cd659739cc14c1eacb720205cc5b139158a9ffdcfcf00ed7f204e3e3",
+        "rows_excluded_species": 846,
+        "rows_retained_viral": 644,
+        "species_filtered": true
+      },
+      {
+        "organism": "hsa",
+        "family": "GO_MF",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/hsa/GO_MF_HIGH.tsv",
+        "rows": 65659,
+        "bytes": 4378343,
+        "sha256": "b010894393af21d514134a6b09d6983b96d1749ef6ede2c0456d88594c1bfa66",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "hsa",
+        "family": "GO_MF",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/hsa/GO_MF_LOW.tsv",
+        "rows": 429016,
+        "bytes": 29105424,
+        "sha256": "3a30d6c6427f24792e7c258bfd140df94251cf8d161a6bb2ea947b485aff37f6",
+        "rows_excluded_species": 1339,
+        "rows_retained_viral": 855,
+        "species_filtered": true
+      },
+      {
+        "organism": "hsa",
+        "family": "GO_MF",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/hsa/GO_MF_MEDIUM.tsv",
+        "rows": 488422,
+        "bytes": 32761122,
+        "sha256": "c19497b4bef69ec3eaae3a4b96f799e3ba41a56f9c7170d402ebe3643f42e33b",
+        "rows_excluded_species": 1339,
+        "rows_retained_viral": 855,
+        "species_filtered": true
+      },
+      {
+        "organism": "hsa",
+        "family": "REACTOME",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/hsa/REACTOME_HIGH.tsv",
+        "rows": 101302,
+        "bytes": 7016176,
+        "sha256": "d5efb488a90c1852c54672e69540ed8d3b418e86bb00552bc5457ca784186e04",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "hsa",
+        "family": "REACTOME",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/hsa/REACTOME_LOW.tsv",
+        "rows": 387811,
+        "bytes": 27360357,
+        "sha256": "019fb0bc778882f7d544f4f47f724c54d54aaf594625a64f7ab5377d2202aa86",
+        "rows_excluded_species": 1538,
+        "rows_retained_viral": 581,
+        "species_filtered": true
+      },
+      {
+        "organism": "hsa",
+        "family": "REACTOME",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/hsa/REACTOME_MEDIUM.tsv",
+        "rows": 460792,
+        "bytes": 32274011,
+        "sha256": "3e12cc7d85391904bd9cc538f9ddc451453d5ddbb528bd53bbc24bb105260524",
+        "rows_excluded_species": 1538,
+        "rows_retained_viral": 581,
+        "species_filtered": true
+      },
+      {
+        "organism": "hsa",
+        "family": "WIKIPATHWAYS",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/hsa/WIKIPATHWAYS_HIGH.tsv",
+        "rows": 82341,
+        "bytes": 5163315,
+        "sha256": "32a256ee5bded096db6f04522a40a6d86af86f5855cffa58889612cafb4312f2",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "hsa",
+        "family": "WIKIPATHWAYS",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/hsa/WIKIPATHWAYS_LOW.tsv",
+        "rows": 168161,
+        "bytes": 10690675,
+        "sha256": "c0f78585ed8f666bf29f3b0e370a6e47b790d3ee214b93bb87e523e1c4d5989b",
+        "rows_excluded_species": 1399,
+        "rows_retained_viral": 403,
+        "species_filtered": true
+      },
+      {
+        "organism": "hsa",
+        "family": "WIKIPATHWAYS",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/hsa/WIKIPATHWAYS_MEDIUM.tsv",
+        "rows": 166231,
+        "bytes": 10480698,
+        "sha256": "7ec7c0bc77b0ac916a226f438ae0fa3199cc16318553877395870d9a5a9974f9",
+        "rows_excluded_species": 1399,
+        "rows_retained_viral": 403,
+        "species_filtered": true
+      },
+      {
+        "organism": "mml",
+        "family": "GO_BP",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/mml/GO_BP_HIGH.tsv",
+        "rows": 70,
+        "bytes": 4789,
+        "sha256": "27a8b801ea62624a8f1d79663c2797370e5ec3b980eeb87d6990b896dc9259ca",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mml",
+        "family": "GO_BP",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/mml/GO_BP_LOW.tsv",
+        "rows": 127035,
+        "bytes": 8509465,
+        "sha256": "f6c60f5c0e542fda57de2280196117050cc67b386c18afc18548b160fc095d34",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mml",
+        "family": "GO_BP",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/mml/GO_BP_MEDIUM.tsv",
+        "rows": 70,
+        "bytes": 4789,
+        "sha256": "27a8b801ea62624a8f1d79663c2797370e5ec3b980eeb87d6990b896dc9259ca",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mml",
+        "family": "GO_CC",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/mml/GO_CC_HIGH.tsv",
+        "rows": 2,
+        "bytes": 177,
+        "sha256": "ea374239cf6aa07d5cf05f190a2e53d3d18f2f9687232406baa525f68d63f64f",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mml",
+        "family": "GO_CC",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/mml/GO_CC_LOW.tsv",
+        "rows": 15648,
+        "bytes": 1055640,
+        "sha256": "9a884a51290c6e58abe49019da79aad736ee793f24a083218ede5973dc80eb8b",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mml",
+        "family": "GO_CC",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/mml/GO_CC_MEDIUM.tsv",
+        "rows": 2,
+        "bytes": 177,
+        "sha256": "ea374239cf6aa07d5cf05f190a2e53d3d18f2f9687232406baa525f68d63f64f",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mml",
+        "family": "GO_MF",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/mml/GO_MF_HIGH.tsv",
+        "rows": 11,
+        "bytes": 788,
+        "sha256": "50871f93f45d0a9f3c7481c45ab1c9a5669200f3fb1ee3dc94854a1df0213600",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mml",
+        "family": "GO_MF",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/mml/GO_MF_LOW.tsv",
+        "rows": 25260,
+        "bytes": 1691559,
+        "sha256": "e9b8adf79df99f0ab10ed8bedd8d897ab30d189f86e5182245930df2718283a5",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mml",
+        "family": "GO_MF",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/mml/GO_MF_MEDIUM.tsv",
+        "rows": 11,
+        "bytes": 788,
+        "sha256": "50871f93f45d0a9f3c7481c45ab1c9a5669200f3fb1ee3dc94854a1df0213600",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mml",
+        "family": "REACTOME",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/mml/REACTOME_HIGH.tsv",
+        "rows": 3,
+        "bytes": 255,
+        "sha256": "47080647e85953c02201f08efe24e09426c69e1c3b20090d2d19d90b5934b9b3",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mml",
+        "family": "REACTOME",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/mml/REACTOME_LOW.tsv",
+        "rows": 32157,
+        "bytes": 2236289,
+        "sha256": "c53304614c065b9409c09fdddbbaa22f1adc729ec15eeeb198d78e7c9f3615ff",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mml",
+        "family": "REACTOME",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/mml/REACTOME_MEDIUM.tsv",
+        "rows": 3,
+        "bytes": 255,
+        "sha256": "47080647e85953c02201f08efe24e09426c69e1c3b20090d2d19d90b5934b9b3",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mmu",
+        "family": "GO_BP",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/mmu/GO_BP_HIGH.tsv",
+        "rows": 225764,
+        "bytes": 15217380,
+        "sha256": "6acdfa3650694cc93277ff59e74b2a163b3dc80772da33f02385a4baef522300",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mmu",
+        "family": "GO_BP",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/mmu/GO_BP_LOW.tsv",
+        "rows": 4692416,
+        "bytes": 317308065,
+        "sha256": "c5f50e52c2d69407dc2843b0e2683545da770f460203fd7acfaf7f04e3929b19",
+        "rows_excluded_species": 167503,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "mmu",
+        "family": "GO_BP",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/mmu/GO_BP_MEDIUM.tsv",
+        "rows": 1975456,
+        "bytes": 132696873,
+        "sha256": "39e251eb59da9c47c36c2587d31b57ccb33bafa86d8746696d567d421eb160c3",
+        "rows_excluded_species": 167503,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "mmu",
+        "family": "GO_CC",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/mmu/GO_CC_HIGH.tsv",
+        "rows": 13112,
+        "bytes": 874515,
+        "sha256": "7b74e7c55b8e14aebb7302594170955d3c6d18dcf0d792ca329ff7b2cbdd9325",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mmu",
+        "family": "GO_CC",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/mmu/GO_CC_LOW.tsv",
+        "rows": 605852,
+        "bytes": 41209322,
+        "sha256": "7e096743f33e9c56a438e613373432ffeade2e3c205a2952c5bf7a45aed1cef1",
+        "rows_excluded_species": 16228,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "mmu",
+        "family": "GO_CC",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/mmu/GO_CC_MEDIUM.tsv",
+        "rows": 243186,
+        "bytes": 16404065,
+        "sha256": "9e7f38f29e2bff07b7df22eba0a0f3b60570341ca9d2d2c453fcbe84763959aa",
+        "rows_excluded_species": 16228,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "mmu",
+        "family": "GO_MF",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/mmu/GO_MF_HIGH.tsv",
+        "rows": 19702,
+        "bytes": 1321498,
+        "sha256": "1bff6ff16c3ca241fe7cef05243b6bd76a8ef3ba2affc221c64a05b92013d4de",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mmu",
+        "family": "GO_MF",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/mmu/GO_MF_LOW.tsv",
+        "rows": 825595,
+        "bytes": 55552164,
+        "sha256": "1993b56c550b9282c4b5a15f8104d3f9102d339614a9291d24b35108d1f632b7",
+        "rows_excluded_species": 20062,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "mmu",
+        "family": "GO_MF",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/mmu/GO_MF_MEDIUM.tsv",
+        "rows": 346274,
+        "bytes": 23187120,
+        "sha256": "4f5deb833f2e552e541282a5732e6acd68fb1dced1fd82e053122c3ed2c848bc",
+        "rows_excluded_species": 20062,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "mmu",
+        "family": "REACTOME",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/mmu/REACTOME_HIGH.tsv",
+        "rows": 12555,
+        "bytes": 869643,
+        "sha256": "a3aebea168cc9a0a0fcb0c677ea82e60146bb4749eaf42e83a0019380d51f8b6",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mmu",
+        "family": "REACTOME",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/mmu/REACTOME_LOW.tsv",
+        "rows": 83379,
+        "bytes": 5808375,
+        "sha256": "ee667535d95c832d0e50cc0382cd93408a99123bb858266f6f243247f5fad370",
+        "rows_excluded_species": 9299,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "mmu",
+        "family": "REACTOME",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/mmu/REACTOME_MEDIUM.tsv",
+        "rows": 112846,
+        "bytes": 7814224,
+        "sha256": "0e75874a5da7c280d0a40e0c1d2411a1a3e0e2c05a1ece88f08fc55a68eb651f",
+        "rows_excluded_species": 9299,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "mmu",
+        "family": "WIKIPATHWAYS",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/mmu/WIKIPATHWAYS_HIGH.tsv",
+        "rows": 4342,
+        "bytes": 269191,
+        "sha256": "752f7c2fb1d79221829d6c434e3bb46cc06afed821d77a5caeded9cb2813783c",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "mmu",
+        "family": "WIKIPATHWAYS",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/mmu/WIKIPATHWAYS_LOW.tsv",
+        "rows": 22924,
+        "bytes": 1436710,
+        "sha256": "6cf66944e959546e7227c3ba597929980ebef3148518ab73e9403a3fe4b2b939",
+        "rows_excluded_species": 2393,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "mmu",
+        "family": "WIKIPATHWAYS",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/mmu/WIKIPATHWAYS_MEDIUM.tsv",
+        "rows": 21446,
+        "bytes": 1331680,
+        "sha256": "985bc9b50ad26a4395164c06d70c903103696e435610035a79fe1fcb329891f5",
+        "rows_excluded_species": 2393,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "rno",
+        "family": "GO_BP",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/rno/GO_BP_HIGH.tsv",
+        "rows": 78130,
+        "bytes": 5230909,
+        "sha256": "8adcdeb168814fe181fa688d7cca30f7c0fb1f8a2398dd2d1656770a3f3ec623",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "rno",
+        "family": "GO_BP",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/rno/GO_BP_LOW.tsv",
+        "rows": 1174288,
+        "bytes": 78701021,
+        "sha256": "fa184b9ecd0ebdc4f8bf12c78885139bbd7cf0d3a9474d825240c058fb7e70e9",
+        "rows_excluded_species": 9430,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "rno",
+        "family": "GO_BP",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/rno/GO_BP_MEDIUM.tsv",
+        "rows": 126376,
+        "bytes": 8449197,
+        "sha256": "41aa878ee00991381f1867618927949c948aa772c6ac99a051b5081315a8879a",
+        "rows_excluded_species": 9430,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "rno",
+        "family": "GO_CC",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/rno/GO_CC_HIGH.tsv",
+        "rows": 5472,
+        "bytes": 364309,
+        "sha256": "08f4028cef577069941346f549aedf94c94997bd1b9f92afbffd7cca464fbb78",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "rno",
+        "family": "GO_CC",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/rno/GO_CC_LOW.tsv",
+        "rows": 150992,
+        "bytes": 10146900,
+        "sha256": "9704a71c62a3226a85ea0c52171c32f99e5f1378f20efea0b31f9acc8887ab21",
+        "rows_excluded_species": 512,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "rno",
+        "family": "GO_CC",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/rno/GO_CC_MEDIUM.tsv",
+        "rows": 8853,
+        "bytes": 587838,
+        "sha256": "4d06d6315a7af0ed0d699d4884a7cf4614826946a2e36ae352ac5d9e120d771c",
+        "rows_excluded_species": 512,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "rno",
+        "family": "GO_MF",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/rno/GO_MF_HIGH.tsv",
+        "rows": 7140,
+        "bytes": 476683,
+        "sha256": "8f9549f08b1fef8dbd55ce2cd023f353bd5e9d1b1e494d4b23461479c2c63e2b",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "rno",
+        "family": "GO_MF",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/rno/GO_MF_LOW.tsv",
+        "rows": 192383,
+        "bytes": 12818136,
+        "sha256": "7658b541b4adca91e9ab1a230d01dc244642b2f44c3216144c46deaa85b4ed54",
+        "rows_excluded_species": 857,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "rno",
+        "family": "GO_MF",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/rno/GO_MF_MEDIUM.tsv",
+        "rows": 11488,
+        "bytes": 766172,
+        "sha256": "0ae7cf42330350c9c6a1bf839a6a4927ef8b43a27e882d05467aa42f97d22a75",
+        "rows_excluded_species": 857,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "rno",
+        "family": "REACTOME",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/rno/REACTOME_HIGH.tsv",
+        "rows": 3995,
+        "bytes": 277005,
+        "sha256": "26519708945e73ce94a6cff86410e490683b2b8c3b782dc9a35a5d8fd205d489",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "rno",
+        "family": "REACTOME",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/rno/REACTOME_LOW.tsv",
+        "rows": 14770,
+        "bytes": 1022219,
+        "sha256": "f9ee171ca9510c6f3a8e46ac496efd26ca7d5a142a02eaa966d57750351a9e41",
+        "rows_excluded_species": 442,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "rno",
+        "family": "REACTOME",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/rno/REACTOME_MEDIUM.tsv",
+        "rows": 7017,
+        "bytes": 484944,
+        "sha256": "415ddaa9940425bc3b5a39bc96eee86fc323cbd26ad491d4681264ab8be1654d",
+        "rows_excluded_species": 442,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "rno",
+        "family": "WIKIPATHWAYS",
+        "tier": "HIGH",
+        "file": "data/processed/enrichment_significant/rno/WIKIPATHWAYS_HIGH.tsv",
+        "rows": 684,
+        "bytes": 42176,
+        "sha256": "9a29cf795cc9b999c4ba527d546a469e4d9c3a45bf4d9eed287f7ba8f24a2e7b",
+        "rows_excluded_species": 0,
+        "rows_retained_viral": 0,
+        "species_filtered": false
+      },
+      {
+        "organism": "rno",
+        "family": "WIKIPATHWAYS",
+        "tier": "LOW",
+        "file": "data/processed/enrichment_significant/rno/WIKIPATHWAYS_LOW.tsv",
+        "rows": 2485,
+        "bytes": 153731,
+        "sha256": "e6274881b14f8387abd8bfa67ec6ef27bf50313156b076cd53fe780fb06b3c98",
+        "rows_excluded_species": 68,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      },
+      {
+        "organism": "rno",
+        "family": "WIKIPATHWAYS",
+        "tier": "MEDIUM",
+        "file": "data/processed/enrichment_significant/rno/WIKIPATHWAYS_MEDIUM.tsv",
+        "rows": 1043,
+        "bytes": 64046,
+        "sha256": "0df26d1ed4011416778c5ac6b3a8015b518eb7e66032ae29bbb1ae7a57a2db4c",
+        "rows_excluded_species": 68,
+        "rows_retained_viral": 0,
+        "species_filtered": true
+      }
+    ],
+    "totals": {
+      "cells": 57,
+      "rows": 19727455,
+      "bytes": 1332869089,
+      "rows_excluded_species": 492394,
+      "rows_retained_viral": 11660
+    }
+  }
+}

@@ -1,0 +1,3359 @@
+{
+  "build": "production_pathways_ora",
+  "note": "Uniform production ORA on REAL gene sets (gene-SYMBOL space) across Reactome + WikiPathways + GO. Matrices: prod_<FAMILY>_<TIER>.csv (distinct from v2-comparison hsa/mmu + existing production rno/mml GO). Reactome/WP exclude macaque (no coverage); GO only adds hsa/mmu (rno/mml production GO already exist).",
+  "matrix_naming": "data/processed/enrichment/<org>/prod_<FAMILY>_<TIER>.csv",
+  "last_run_organisms": [
+    "hsa",
+    "mml",
+    "mmu",
+    "rno"
+  ],
+  "last_run_families": [
+    "REACTOME",
+    "WIKIPATHWAYS",
+    "GO"
+  ],
+  "last_run_tiers": [
+    "HIGH",
+    "MEDIUM",
+    "LOW"
+  ],
+  "last_run_wall_s": 5752.8,
+  "organisms": [
+    {
+      "organism": "hsa",
+      "taxid": 9606,
+      "org_db_package": "org.Hs.eg.db",
+      "families": [
+        {
+          "family": "REACTOME",
+          "n_terms_total": 2793,
+          "n_universe": 11230,
+          "provenance": {
+            "reactome_db_version": "1.95.0",
+            "org_db_package": "org.Hs.eg.db",
+            "org_db_version": "3.22.0",
+            "r_version": "4.5.3",
+            "species_code": "HSA",
+            "n_pathways": "2820",
+            "n_pairs": "134816"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 7742,
+              "n_dropped_pairs": 1370
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 1035530,
+              "n_dropped_pairs": 611709
+            },
+            "LOW": {
+              "n_kept_pairs": 1009383,
+              "n_dropped_pairs": 703962
+            }
+          }
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "n_terms_total": 986,
+          "n_universe": 9028,
+          "provenance": {
+            "wikipathways_release": "20260610",
+            "wikipathways_species": "Homo_sapiens",
+            "gmt_filename": "wikipathways-20260610-gmt-Homo_sapiens.gmt",
+            "gmt_url": "https://data.wikipathways.org/20260610/gmt/wikipathways-20260610-gmt-Homo_sapiens.gmt",
+            "gmt_sha256": "2c954f71037ad663a92804cfd6104391f69c75e73c431fdcd2980e10ee8999db",
+            "gmt_size_bytes": "340982",
+            "n_pathways_in_gmt": "986",
+            "n_pathways_mapped": "986",
+            "n_entrez_pairs_mapped": "40182",
+            "n_entrez_pairs_unmapped": "0",
+            "org_db_package": "org.Hs.eg.db",
+            "org_db_version": "3.22.0",
+            "r_version": "4.5.3"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 7914,
+              "n_dropped_pairs": 1198
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 866701,
+              "n_dropped_pairs": 780538
+            },
+            "LOW": {
+              "n_kept_pairs": 845426,
+              "n_dropped_pairs": 867919
+            }
+          }
+        },
+        {
+          "family": "GO_BP",
+          "n_terms_total": 15046,
+          "n_universe": 18860,
+          "provenance": {
+            "org_db_package": "org.Hs.eg.db",
+            "org_db_version": "3.22.0",
+            "go_db_version": "3.22.0",
+            "r_version": "4.5.3",
+            "go_columns": "GOALL/ONTOLOGYALL",
+            "n_pairs": "1941898",
+            "go_propagation": "all"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 8918,
+              "n_dropped_pairs": 194
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 1502817,
+              "n_dropped_pairs": 144422
+            },
+            "LOW": {
+              "n_kept_pairs": 1562631,
+              "n_dropped_pairs": 150714
+            }
+          }
+        },
+        {
+          "family": "GO_CC",
+          "n_terms_total": 2009,
+          "n_universe": 19944,
+          "provenance": {
+            "org_db_package": "org.Hs.eg.db",
+            "org_db_version": "3.22.0",
+            "go_db_version": "3.22.0",
+            "r_version": "4.5.3",
+            "go_columns": "GOALL/ONTOLOGYALL",
+            "n_pairs": "1941898",
+            "go_propagation": "all"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 8945,
+              "n_dropped_pairs": 167
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 1555151,
+              "n_dropped_pairs": 92088
+            },
+            "LOW": {
+              "n_kept_pairs": 1633371,
+              "n_dropped_pairs": 79974
+            }
+          }
+        },
+        {
+          "family": "GO_MF",
+          "n_terms_total": 5076,
+          "n_universe": 18662,
+          "provenance": {
+            "org_db_package": "org.Hs.eg.db",
+            "org_db_version": "3.22.0",
+            "go_db_version": "3.22.0",
+            "r_version": "4.5.3",
+            "go_columns": "GOALL/ONTOLOGYALL",
+            "n_pairs": "1941898",
+            "go_propagation": "all"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 8932,
+              "n_dropped_pairs": 180
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 1541223,
+              "n_dropped_pairs": 106016
+            },
+            "LOW": {
+              "n_kept_pairs": 1609644,
+              "n_dropped_pairs": 103701
+            }
+          }
+        }
+      ],
+      "per_source_census": {
+        "mirtarbase": {
+          "n_rows": 957040,
+          "n_mirnas_strong": 735,
+          "n_mirnas_weak": 2947
+        },
+        "diana_tarbase": {
+          "n_rows": 4724537,
+          "n_mirnas_high": 361,
+          "n_mirnas_medium": 1216,
+          "tier_rule": "HIGH = confidence==1 AND gene-specific assay (method not in CLIP_METHODS and not in KNOWN_OTHER_METHODS); else MEDIUM"
+        },
+        "targetscan": {
+          "n_rows": 228049,
+          "n_mirnas": 321
+        },
+        "mirdb": {
+          "n_rows": 3375741,
+          "n_mirnas": 2656,
+          "n_mapped_pairs": 3371483,
+          "n_unmapped_pairs": 4258
+        }
+      },
+      "per_tier_raw": {
+        "HIGH": {
+          "n_mirnas": 748,
+          "n_genes": 3011,
+          "n_pairs": 9112
+        },
+        "MEDIUM": {
+          "n_mirnas": 2990,
+          "n_genes": 20278,
+          "n_pairs": 1647239
+        },
+        "LOW": {
+          "n_mirnas": 2698,
+          "n_genes": 18852,
+          "n_pairs": 1713345
+        }
+      },
+      "census_notes": {
+        "mirdb": "4258 RefSeq targets dropped (no SYMBOL in org.db); 3371483 mapped"
+      },
+      "cells": [
+        {
+          "organism": "hsa",
+          "family": "REACTOME",
+          "tier": "HIGH",
+          "n_mirnas": 717,
+          "n_pathways_scored": 2347,
+          "n_pathways_total": 2793,
+          "n_universe": 11230,
+          "elapsed_s": 17.67,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "717",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_REACTOME_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/REACTOME_HIGH.tsv",
+          "n_significant_rows": 101302
+        },
+        {
+          "organism": "hsa",
+          "family": "REACTOME",
+          "tier": "MEDIUM",
+          "n_mirnas": 2926,
+          "n_pathways_scored": 2789,
+          "n_pathways_total": 2793,
+          "n_universe": 11230,
+          "elapsed_s": 94.09,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "2926",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_REACTOME_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/REACTOME_MEDIUM.tsv",
+          "n_significant_rows": 462330
+        },
+        {
+          "organism": "hsa",
+          "family": "REACTOME",
+          "tier": "LOW",
+          "n_mirnas": 3026,
+          "n_pathways_scored": 2791,
+          "n_pathways_total": 2793,
+          "n_universe": 11230,
+          "elapsed_s": 135.85,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "3026",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_REACTOME_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/REACTOME_LOW.tsv",
+          "n_significant_rows": 389349
+        },
+        {
+          "organism": "hsa",
+          "family": "WIKIPATHWAYS",
+          "tier": "HIGH",
+          "n_mirnas": 728,
+          "n_pathways_scored": 941,
+          "n_pathways_total": 986,
+          "n_universe": 9028,
+          "elapsed_s": 12.83,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "728",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_WIKIPATHWAYS_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/WIKIPATHWAYS_HIGH.tsv",
+          "n_significant_rows": 82341
+        },
+        {
+          "organism": "hsa",
+          "family": "WIKIPATHWAYS",
+          "tier": "MEDIUM",
+          "n_mirnas": 2897,
+          "n_pathways_scored": 985,
+          "n_pathways_total": 986,
+          "n_universe": 9028,
+          "elapsed_s": 38.84,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "2897",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_WIKIPATHWAYS_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/WIKIPATHWAYS_MEDIUM.tsv",
+          "n_significant_rows": 167630
+        },
+        {
+          "organism": "hsa",
+          "family": "WIKIPATHWAYS",
+          "tier": "LOW",
+          "n_mirnas": 2995,
+          "n_pathways_scored": 986,
+          "n_pathways_total": 986,
+          "n_universe": 9028,
+          "elapsed_s": 54.68,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "2995",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_WIKIPATHWAYS_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/WIKIPATHWAYS_LOW.tsv",
+          "n_significant_rows": 169560
+        },
+        {
+          "organism": "hsa",
+          "family": "GO_BP",
+          "tier": "HIGH",
+          "n_mirnas": 744,
+          "n_pathways_scored": 11789,
+          "n_pathways_total": 15046,
+          "n_universe": 18860,
+          "elapsed_s": 98.0,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "744",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_GO_BP_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/GO_BP_HIGH.tsv",
+          "n_significant_rows": 666059
+        },
+        {
+          "organism": "hsa",
+          "family": "GO_BP",
+          "tier": "MEDIUM",
+          "n_mirnas": 2955,
+          "n_pathways_scored": 14933,
+          "n_pathways_total": 15046,
+          "n_universe": 18860,
+          "elapsed_s": 657.5,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "2955",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_GO_BP_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/GO_BP_MEDIUM.tsv",
+          "n_significant_rows": 2134938
+        },
+        {
+          "organism": "hsa",
+          "family": "GO_BP",
+          "tier": "LOW",
+          "n_mirnas": 3054,
+          "n_pathways_scored": 14968,
+          "n_pathways_total": 15046,
+          "n_universe": 18860,
+          "elapsed_s": 968.25,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "3054",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_GO_BP_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/GO_BP_LOW.tsv",
+          "n_significant_rows": 2471967
+        },
+        {
+          "organism": "hsa",
+          "family": "GO_CC",
+          "tier": "HIGH",
+          "n_mirnas": 746,
+          "n_pathways_scored": 1420,
+          "n_pathways_total": 2009,
+          "n_universe": 19944,
+          "elapsed_s": 31.37,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "746",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_GO_CC_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/GO_CC_HIGH.tsv",
+          "n_significant_rows": 41496
+        },
+        {
+          "organism": "hsa",
+          "family": "GO_CC",
+          "tier": "MEDIUM",
+          "n_mirnas": 2961,
+          "n_pathways_scored": 2003,
+          "n_pathways_total": 2009,
+          "n_universe": 19944,
+          "elapsed_s": 141.41,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "2961",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_GO_CC_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/GO_CC_MEDIUM.tsv",
+          "n_significant_rows": 416900
+        },
+        {
+          "organism": "hsa",
+          "family": "GO_CC",
+          "tier": "LOW",
+          "n_mirnas": 3060,
+          "n_pathways_scored": 2006,
+          "n_pathways_total": 2009,
+          "n_universe": 19944,
+          "elapsed_s": 175.34,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "3060",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_GO_CC_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/GO_CC_LOW.tsv",
+          "n_significant_rows": 486377
+        },
+        {
+          "organism": "hsa",
+          "family": "GO_MF",
+          "tier": "HIGH",
+          "n_mirnas": 746,
+          "n_pathways_scored": 2793,
+          "n_pathways_total": 5076,
+          "n_universe": 18662,
+          "elapsed_s": 24.22,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "746",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_GO_MF_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/GO_MF_HIGH.tsv",
+          "n_significant_rows": 65659
+        },
+        {
+          "organism": "hsa",
+          "family": "GO_MF",
+          "tier": "MEDIUM",
+          "n_mirnas": 2962,
+          "n_pathways_scored": 5038,
+          "n_pathways_total": 5076,
+          "n_universe": 18662,
+          "elapsed_s": 139.91,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "2962",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_GO_MF_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/GO_MF_MEDIUM.tsv",
+          "n_significant_rows": 489761
+        },
+        {
+          "organism": "hsa",
+          "family": "GO_MF",
+          "tier": "LOW",
+          "n_mirnas": 3061,
+          "n_pathways_scored": 5067,
+          "n_pathways_total": 5076,
+          "n_universe": 18662,
+          "elapsed_s": 209.05,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "3061",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/hsa/prod_GO_MF_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/hsa/GO_MF_LOW.tsv",
+          "n_significant_rows": 430355
+        }
+      ],
+      "sanity": [
+        {
+          "family": "REACTOME",
+          "tier": "HIGH",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 72,
+          "top_pathways": [
+            {
+              "pathway_id": "R-HSA-162582",
+              "pvalue": 3.20713313711252e-08,
+              "p_adjust": 1.69613337215601e-05,
+              "overlap": 38
+            },
+            {
+              "pathway_id": "R-HSA-9730414",
+              "pvalue": 4.26700219410318e-08,
+              "p_adjust": 1.69613337215601e-05,
+              "overlap": 10
+            },
+            {
+              "pathway_id": "R-HSA-9006934",
+              "pvalue": 1.75193213030602e-07,
+              "p_adjust": 4.64262014531094e-05,
+              "overlap": 16
+            },
+            {
+              "pathway_id": "R-HSA-5663202",
+              "pvalue": 8.40893367225522e-07,
+              "p_adjust": 0.000167127556736072,
+              "overlap": 14
+            },
+            {
+              "pathway_id": "R-HSA-109582",
+              "pvalue": 1.42866027998873e-06,
+              "p_adjust": 0.000227156984518208,
+              "overlap": 16
+            },
+            {
+              "pathway_id": "R-HSA-212436",
+              "pvalue": 4.72182244976696e-06,
+              "p_adjust": 0.000552784177870545,
+              "overlap": 22
+            },
+            {
+              "pathway_id": "R-HSA-6785807",
+              "pvalue": 4.8672820693004e-06,
+              "p_adjust": 0.000552784177870545,
+              "overlap": 7
+            },
+            {
+              "pathway_id": "R-HSA-76002",
+              "pvalue": 6.04076242831239e-06,
+              "p_adjust": 0.000600300766313543,
+              "overlap": 10
+            }
+          ]
+        },
+        {
+          "family": "REACTOME",
+          "tier": "MEDIUM",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 4184,
+          "top_pathways": [
+            {
+              "pathway_id": "R-HSA-1640170",
+              "pvalue": 2.77643963991721e-41,
+              "p_adjust": 6.8244886349165e-38,
+              "overlap": 425
+            },
+            {
+              "pathway_id": "R-HSA-69278",
+              "pvalue": 3.98205267478462e-36,
+              "p_adjust": 4.8939427373103e-33,
+              "overlap": 348
+            },
+            {
+              "pathway_id": "R-HSA-1643685",
+              "pvalue": 5.12133546211014e-25,
+              "p_adjust": 4.19608085528891e-22,
+              "overlap": 977
+            },
+            {
+              "pathway_id": "R-HSA-194315",
+              "pvalue": 1.63545442896161e-24,
+              "p_adjust": 1.00498674659691e-21,
+              "overlap": 389
+            },
+            {
+              "pathway_id": "R-HSA-68886",
+              "pvalue": 2.63139913026088e-24,
+              "p_adjust": 1.29359581243625e-21,
+              "overlap": 250
+            },
+            {
+              "pathway_id": "R-HSA-9716542",
+              "pvalue": 1.0082543999461e-23,
+              "p_adjust": 4.13048219177918e-21,
+              "overlap": 394
+            },
+            {
+              "pathway_id": "R-HSA-69620",
+              "pvalue": 1.68484155241808e-22,
+              "p_adjust": 5.21958042238345e-20,
+              "overlap": 190
+            },
+            {
+              "pathway_id": "R-HSA-5663205",
+              "pvalue": 1.69880567042586e-22,
+              "p_adjust": 5.21958042238345e-20,
+              "overlap": 631
+            }
+          ]
+        },
+        {
+          "family": "REACTOME",
+          "tier": "LOW",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 4391,
+          "top_pathways": [
+            {
+              "pathway_id": "R-HSA-1640170",
+              "pvalue": 4.33547466042245e-37,
+              "p_adjust": 1.07172933605643e-33,
+              "overlap": 429
+            },
+            {
+              "pathway_id": "R-HSA-69278",
+              "pvalue": 5.26204938148815e-33,
+              "p_adjust": 6.50389303551935e-30,
+              "overlap": 352
+            },
+            {
+              "pathway_id": "R-HSA-1643685",
+              "pvalue": 3.1771234676096e-24,
+              "p_adjust": 2.61794973731031e-21,
+              "overlap": 1013
+            },
+            {
+              "pathway_id": "R-HSA-194315",
+              "pvalue": 5.75827075717948e-23,
+              "p_adjust": 3.55861132793692e-20,
+              "overlap": 398
+            },
+            {
+              "pathway_id": "R-HSA-9716542",
+              "pvalue": 4.05323831468307e-22,
+              "p_adjust": 2.00392102277931e-19,
+              "overlap": 403
+            },
+            {
+              "pathway_id": "R-HSA-68886",
+              "pvalue": 2.46500760629851e-21,
+              "p_adjust": 1.01558313379499e-18,
+              "overlap": 251
+            },
+            {
+              "pathway_id": "R-HSA-5663205",
+              "pvalue": 1.15252371408422e-20,
+              "p_adjust": 4.07005517316599e-18,
+              "overlap": 648
+            },
+            {
+              "pathway_id": "R-HSA-69620",
+              "pvalue": 3.20948475687988e-20,
+              "p_adjust": 9.2443693414124e-18,
+              "overlap": 191
+            }
+          ]
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "tier": "HIGH",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 70,
+          "top_pathways": [
+            {
+              "pathway_id": "WP1992",
+              "pvalue": 4.14961090956745e-17,
+              "p_adjust": 1.7594350256566e-14,
+              "overlap": 9
+            },
+            {
+              "pathway_id": "WP3888",
+              "pvalue": 1.99680040194697e-08,
+              "p_adjust": 4.23321685212757e-06,
+              "overlap": 17
+            },
+            {
+              "pathway_id": "WP5434",
+              "pvalue": 3.67971846042789e-08,
+              "p_adjust": 5.20066875740475e-06,
+              "overlap": 18
+            },
+            {
+              "pathway_id": "WP4659",
+              "pvalue": 2.65449389427628e-06,
+              "p_adjust": 0.000231751113182014,
+              "overlap": 8
+            },
+            {
+              "pathway_id": "WP4262",
+              "pvalue": 2.73291407054262e-06,
+              "p_adjust": 0.000231751113182014,
+              "overlap": 9
+            },
+            {
+              "pathway_id": "WP2004",
+              "pvalue": 3.54423132963619e-06,
+              "p_adjust": 0.000250459013960958,
+              "overlap": 14
+            },
+            {
+              "pathway_id": "WP2064",
+              "pvalue": 1.19775600017229e-05,
+              "p_adjust": 0.000725497920104356,
+              "overlap": 7
+            },
+            {
+              "pathway_id": "WP134",
+              "pvalue": 1.52826449390626e-05,
+              "p_adjust": 0.000809980181770317,
+              "overlap": 3
+            }
+          ]
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "tier": "MEDIUM",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 3506,
+          "top_pathways": [
+            {
+              "pathway_id": "WP2004",
+              "pvalue": 4.71259830629778e-37,
+              "p_adjust": 4.40156681808212e-34,
+              "overlap": 291
+            },
+            {
+              "pathway_id": "WP2005",
+              "pvalue": 4.37188750533948e-29,
+              "p_adjust": 2.04167146499354e-26,
+              "overlap": 239
+            },
+            {
+              "pathway_id": "WP2003",
+              "pvalue": 2.51923857816337e-15,
+              "p_adjust": 7.84322944001529e-13,
+              "overlap": 93
+            },
+            {
+              "pathway_id": "WP3888",
+              "pvalue": 8.85636152761893e-13,
+              "p_adjust": 2.06796041669902e-10,
+              "overlap": 239
+            },
+            {
+              "pathway_id": "WP4016",
+              "pvalue": 2.24043475070579e-12,
+              "p_adjust": 4.18513211431842e-10,
+              "overlap": 63
+            },
+            {
+              "pathway_id": "WP2006",
+              "pvalue": 3.43090565649154e-11,
+              "p_adjust": 5.34077647193849e-09,
+              "overlap": 87
+            },
+            {
+              "pathway_id": "WP437",
+              "pvalue": 6.72770152368903e-11,
+              "p_adjust": 8.97667603303651e-09,
+              "overlap": 102
+            },
+            {
+              "pathway_id": "WP5565",
+              "pvalue": 7.72387317485371e-09,
+              "p_adjust": 8.90762158126785e-07,
+              "overlap": 57
+            }
+          ]
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "tier": "LOW",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 3679,
+          "top_pathways": [
+            {
+              "pathway_id": "WP2004",
+              "pvalue": 1.27754797674434e-33,
+              "p_adjust": 1.19961755016294e-30,
+              "overlap": 293
+            },
+            {
+              "pathway_id": "WP2005",
+              "pvalue": 1.63603983069347e-26,
+              "p_adjust": 7.68120700510582e-24,
+              "overlap": 241
+            },
+            {
+              "pathway_id": "WP2003",
+              "pvalue": 8.14795399901333e-14,
+              "p_adjust": 2.55030960169117e-11,
+              "overlap": 93
+            },
+            {
+              "pathway_id": "WP4016",
+              "pvalue": 5.26704845044643e-12,
+              "p_adjust": 1.2364396237423e-09,
+              "overlap": 64
+            },
+            {
+              "pathway_id": "WP3888",
+              "pvalue": 1.05530482705846e-11,
+              "p_adjust": 1.9818624652158e-09,
+              "overlap": 244
+            },
+            {
+              "pathway_id": "WP437",
+              "pvalue": 6.09740691737224e-10,
+              "p_adjust": 8.65798969940412e-08,
+              "overlap": 103
+            },
+            {
+              "pathway_id": "WP2006",
+              "pvalue": 6.45430542021607e-10,
+              "p_adjust": 8.65798969940412e-08,
+              "overlap": 87
+            },
+            {
+              "pathway_id": "WP1984",
+              "pvalue": 6.4690282375563e-09,
+              "p_adjust": 7.5930218938317e-07,
+              "overlap": 98
+            }
+          ]
+        },
+        {
+          "family": "GO_BP",
+          "tier": "HIGH",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 81,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0072359",
+              "pvalue": 3.36016329147829e-19,
+              "p_adjust": 1.29635099785232e-15,
+              "overlap": 34
+            },
+            {
+              "pathway_id": "GO:0051239",
+              "pvalue": 8.4165037601259e-18,
+              "p_adjust": 1.62354357532829e-14,
+              "overlap": 48
+            },
+            {
+              "pathway_id": "GO:0007507",
+              "pvalue": 1.20025553058172e-16,
+              "p_adjust": 1.54352861232809e-13,
+              "overlap": 24
+            },
+            {
+              "pathway_id": "GO:0012501",
+              "pvalue": 4.1820283342435e-16,
+              "p_adjust": 3.35151418242138e-13,
+              "overlap": 38
+            },
+            {
+              "pathway_id": "GO:0008219",
+              "pvalue": 4.45821966611745e-16,
+              "p_adjust": 3.35151418242138e-13,
+              "overlap": 38
+            },
+            {
+              "pathway_id": "GO:0050793",
+              "pvalue": 5.2123082152743e-16,
+              "p_adjust": 3.35151418242138e-13,
+              "overlap": 42
+            },
+            {
+              "pathway_id": "GO:0006915",
+              "pvalue": 8.99899045681324e-16,
+              "p_adjust": 4.95972931176936e-13,
+              "overlap": 37
+            },
+            {
+              "pathway_id": "GO:0043069",
+              "pvalue": 1.7122362799456e-15,
+              "p_adjust": 7.42495480411921e-13,
+              "overlap": 27
+            }
+          ]
+        },
+        {
+          "family": "GO_BP",
+          "tier": "MEDIUM",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 6049,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0071840",
+              "pvalue": 5.5366357636155e-114,
+              "p_adjust": 6.8211352607743e-110,
+              "overlap": 2950
+            },
+            {
+              "pathway_id": "GO:0016043",
+              "pvalue": 1.27403185645418e-110,
+              "p_adjust": 7.84803623575775e-107,
+              "overlap": 2866
+            },
+            {
+              "pathway_id": "GO:0006996",
+              "pvalue": 6.98415592089636e-91,
+              "p_adjust": 2.86816003151477e-87,
+              "overlap": 1698
+            },
+            {
+              "pathway_id": "GO:0008104",
+              "pvalue": 9.16459091428355e-69,
+              "p_adjust": 2.82269400159933e-65,
+              "overlap": 1201
+            },
+            {
+              "pathway_id": "GO:0044085",
+              "pvalue": 2.87731540267701e-65,
+              "p_adjust": 7.08970515219616e-62,
+              "overlap": 1573
+            },
+            {
+              "pathway_id": "GO:0033036",
+              "pvalue": 5.1705633306245e-63,
+              "p_adjust": 1.06168900388823e-59,
+              "overlap": 1372
+            },
+            {
+              "pathway_id": "GO:0022607",
+              "pvalue": 9.42713004420577e-63,
+              "p_adjust": 1.65917488778022e-59,
+              "overlap": 1467
+            },
+            {
+              "pathway_id": "GO:0051128",
+              "pvalue": 4.48403333386361e-60,
+              "p_adjust": 6.90541133414996e-57,
+              "overlap": 1187
+            }
+          ]
+        },
+        {
+          "family": "GO_BP",
+          "tier": "LOW",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 6396,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0071840",
+              "pvalue": 6.47581628252016e-115,
+              "p_adjust": 8.06303885336586e-111,
+              "overlap": 3091
+            },
+            {
+              "pathway_id": "GO:0016043",
+              "pvalue": 3.06497651639886e-112,
+              "p_adjust": 1.90810113028411e-108,
+              "overlap": 3005
+            },
+            {
+              "pathway_id": "GO:0006996",
+              "pvalue": 7.49298349074904e-88,
+              "p_adjust": 3.10983791477721e-84,
+              "overlap": 1762
+            },
+            {
+              "pathway_id": "GO:0008104",
+              "pvalue": 1.27548712485138e-66,
+              "p_adjust": 3.97027254788114e-63,
+              "overlap": 1245
+            },
+            {
+              "pathway_id": "GO:0044085",
+              "pvalue": 8.87872291197922e-64,
+              "p_adjust": 2.21097957954107e-60,
+              "overlap": 1638
+            },
+            {
+              "pathway_id": "GO:0022607",
+              "pvalue": 3.74479789710543e-62,
+              "p_adjust": 7.77107976947662e-59,
+              "overlap": 1530
+            },
+            {
+              "pathway_id": "GO:0051128",
+              "pvalue": 2.54703389707387e-61,
+              "p_adjust": 4.53044557892382e-58,
+              "overlap": 1242
+            },
+            {
+              "pathway_id": "GO:0048522",
+              "pvalue": 7.47117048783945e-60,
+              "p_adjust": 1.16279429680111e-56,
+              "overlap": 2554
+            }
+          ]
+        },
+        {
+          "family": "GO_CC",
+          "tier": "HIGH",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 81,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0031974",
+              "pvalue": 8.38662172241422e-07,
+              "p_adjust": 0.000103559503018139,
+              "overlap": 47
+            },
+            {
+              "pathway_id": "GO:0043233",
+              "pvalue": 8.38662172241422e-07,
+              "p_adjust": 0.000103559503018139,
+              "overlap": 47
+            },
+            {
+              "pathway_id": "GO:0070013",
+              "pvalue": 8.38662172241422e-07,
+              "p_adjust": 0.000103559503018139,
+              "overlap": 47
+            },
+            {
+              "pathway_id": "GO:0005654",
+              "pvalue": 1.11654450693411e-06,
+              "p_adjust": 0.000103559503018139,
+              "overlap": 37
+            },
+            {
+              "pathway_id": "GO:0005911",
+              "pvalue": 1.52146063773105e-06,
+              "p_adjust": 0.000112892379319644,
+              "overlap": 12
+            },
+            {
+              "pathway_id": "GO:0070161",
+              "pvalue": 3.67057281073646e-06,
+              "p_adjust": 0.000226963752130538,
+              "overlap": 15
+            },
+            {
+              "pathway_id": "GO:0005829",
+              "pvalue": 5.75570564056298e-06,
+              "p_adjust": 0.000305052398949838,
+              "overlap": 42
+            },
+            {
+              "pathway_id": "GO:0005667",
+              "pvalue": 8.84871107315849e-06,
+              "p_adjust": 0.000410358976017725,
+              "overlap": 11
+            }
+          ]
+        },
+        {
+          "family": "GO_CC",
+          "tier": "MEDIUM",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 6292,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0005622",
+              "pvalue": 5.3426660220644e-227,
+              "p_adjust": 8.93828025491373e-224,
+              "overlap": 5765
+            },
+            {
+              "pathway_id": "GO:0005737",
+              "pvalue": 8.64804715808073e-205,
+              "p_adjust": 7.23409144773453e-202,
+              "overlap": 4872
+            },
+            {
+              "pathway_id": "GO:0043229",
+              "pvalue": 3.70345687999995e-194,
+              "p_adjust": 2.06529445341331e-191,
+              "overlap": 5288
+            },
+            {
+              "pathway_id": "GO:0043231",
+              "pvalue": 1.33935702131974e-180,
+              "p_adjust": 5.6018607416698e-178,
+              "overlap": 4950
+            },
+            {
+              "pathway_id": "GO:0043226",
+              "pvalue": 6.53523118853898e-179,
+              "p_adjust": 2.18668835568514e-176,
+              "overlap": 5505
+            },
+            {
+              "pathway_id": "GO:0043227",
+              "pvalue": 5.92548312701499e-161,
+              "p_adjust": 1.65222221191601e-158,
+              "overlap": 5244
+            },
+            {
+              "pathway_id": "GO:0005654",
+              "pvalue": 8.63565707717362e-149,
+              "p_adjust": 2.0639220414445e-146,
+              "overlap": 2075
+            },
+            {
+              "pathway_id": "GO:0005829",
+              "pvalue": 1.95156455327288e-137,
+              "p_adjust": 4.08120937203191e-135,
+              "overlap": 2521
+            }
+          ]
+        },
+        {
+          "family": "GO_CC",
+          "tier": "LOW",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 6667,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0005622",
+              "pvalue": 4.8784088392401e-230,
+              "p_adjust": 8.22499730295881e-227,
+              "overlap": 6083
+            },
+            {
+              "pathway_id": "GO:0005737",
+              "pvalue": 1.38910317918887e-198,
+              "p_adjust": 1.17101398005622e-195,
+              "overlap": 5108
+            },
+            {
+              "pathway_id": "GO:0043229",
+              "pvalue": 4.63916265216534e-194,
+              "p_adjust": 2.60720941051692e-191,
+              "overlap": 5568
+            },
+            {
+              "pathway_id": "GO:0043231",
+              "pvalue": 1.54745656278089e-182,
+              "p_adjust": 6.52252941212145e-180,
+              "overlap": 5213
+            },
+            {
+              "pathway_id": "GO:0043226",
+              "pvalue": 3.37528886746727e-180,
+              "p_adjust": 1.13814740610996e-177,
+              "overlap": 5805
+            },
+            {
+              "pathway_id": "GO:0043227",
+              "pvalue": 8.3688763980423e-163,
+              "p_adjust": 2.35165426784989e-160,
+              "overlap": 5529
+            },
+            {
+              "pathway_id": "GO:0005654",
+              "pvalue": 4.34256021446349e-151,
+              "p_adjust": 1.04593664594078e-148,
+              "overlap": 2170
+            },
+            {
+              "pathway_id": "GO:0005829",
+              "pvalue": 8.87580542632255e-133,
+              "p_adjust": 1.87057599359748e-130,
+              "overlap": 2623
+            }
+          ]
+        },
+        {
+          "family": "GO_MF",
+          "tier": "HIGH",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 81,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0019899",
+              "pvalue": 1.59119562104812e-09,
+              "p_adjust": 8.89478352165897e-07,
+              "overlap": 30
+            },
+            {
+              "pathway_id": "GO:0008134",
+              "pvalue": 5.68215934486772e-09,
+              "p_adjust": 1.58816353689053e-06,
+              "overlap": 16
+            },
+            {
+              "pathway_id": "GO:0140297",
+              "pvalue": 2.67830255792745e-08,
+              "p_adjust": 4.99057043293815e-06,
+              "overlap": 14
+            },
+            {
+              "pathway_id": "GO:0005515",
+              "pvalue": 2.30600184087319e-06,
+              "p_adjust": 0.000322263757262028,
+              "overlap": 79
+            },
+            {
+              "pathway_id": "GO:0061629",
+              "pvalue": 3.09723842255942e-06,
+              "p_adjust": 0.000346271255642143,
+              "overlap": 10
+            },
+            {
+              "pathway_id": "GO:0098772",
+              "pvalue": 3.74789461420146e-06,
+              "p_adjust": 0.000349178848223103,
+              "overlap": 26
+            },
+            {
+              "pathway_id": "GO:0042802",
+              "pvalue": 4.60327100908604e-06,
+              "p_adjust": 0.000367604070582728,
+              "overlap": 25
+            },
+            {
+              "pathway_id": "GO:0019207",
+              "pvalue": 7.44298940231076e-06,
+              "p_adjust": 0.000520078884486465,
+              "overlap": 9
+            }
+          ]
+        },
+        {
+          "family": "GO_MF",
+          "tier": "MEDIUM",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 6245,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0005515",
+              "pvalue": 1.08098651576221e-151,
+              "p_adjust": 3.91965710615376e-148,
+              "overlap": 5625
+            },
+            {
+              "pathway_id": "GO:0005488",
+              "pvalue": 1.64083171339717e-60,
+              "p_adjust": 2.97482789638907e-57,
+              "overlap": 6004
+            },
+            {
+              "pathway_id": "GO:0019899",
+              "pvalue": 5.56205285709461e-43,
+              "p_adjust": 6.72266788660835e-40,
+              "overlap": 997
+            },
+            {
+              "pathway_id": "GO:0003824",
+              "pvalue": 1.98496937019748e-35,
+              "p_adjust": 1.79937473408402e-32,
+              "overlap": 2244
+            },
+            {
+              "pathway_id": "GO:1901265",
+              "pvalue": 4.58328505732999e-33,
+              "p_adjust": 3.32379832357571e-30,
+              "overlap": 969
+            },
+            {
+              "pathway_id": "GO:1901363",
+              "pvalue": 6.43720897544775e-33,
+              "p_adjust": 3.89021995749559e-30,
+              "overlap": 1017
+            },
+            {
+              "pathway_id": "GO:0000166",
+              "pvalue": 2.09913756838798e-32,
+              "p_adjust": 1.08735326042497e-29,
+              "overlap": 959
+            },
+            {
+              "pathway_id": "GO:0017076",
+              "pvalue": 4.18491666717857e-31,
+              "p_adjust": 1.89681347939869e-28,
+              "overlap": 891
+            }
+          ]
+        },
+        {
+          "family": "GO_MF",
+          "tier": "LOW",
+          "mirna": "hsa-miR-1-3p",
+          "n_targets": 6612,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0005515",
+              "pvalue": 9.84906818406834e-154,
+              "p_adjust": 3.64907976219732e-150,
+              "overlap": 5934
+            },
+            {
+              "pathway_id": "GO:0005488",
+              "pvalue": 2.16008921975254e-60,
+              "p_adjust": 4.00156527959158e-57,
+              "overlap": 6346
+            },
+            {
+              "pathway_id": "GO:0019899",
+              "pvalue": 8.32145528537161e-43,
+              "p_adjust": 1.02769972774339e-39,
+              "overlap": 1041
+            },
+            {
+              "pathway_id": "GO:0003824",
+              "pvalue": 6.28694625521123e-35,
+              "p_adjust": 5.8232839688894e-32,
+              "overlap": 2356
+            },
+            {
+              "pathway_id": "GO:1901265",
+              "pvalue": 6.81034431835379e-32,
+              "p_adjust": 5.04646513990016e-29,
+              "overlap": 1009
+            },
+            {
+              "pathway_id": "GO:1901363",
+              "pvalue": 1.22297098312101e-31,
+              "p_adjust": 7.55184582077222e-29,
+              "overlap": 1059
+            },
+            {
+              "pathway_id": "GO:0000166",
+              "pvalue": 2.44945050680487e-31,
+              "p_adjust": 1.29645916110172e-28,
+              "overlap": 999
+            },
+            {
+              "pathway_id": "GO:0035639",
+              "pvalue": 1.88544618264462e-30,
+              "p_adjust": 8.73197263337288e-28,
+              "overlap": 870
+            }
+          ]
+        }
+      ],
+      "organism_wall_s": 3161.6
+    },
+    {
+      "organism": "mmu",
+      "taxid": 10090,
+      "org_db_package": "org.Mm.eg.db",
+      "families": [
+        {
+          "family": "REACTOME",
+          "n_terms_total": 1815,
+          "n_universe": 8778,
+          "provenance": {
+            "reactome_db_version": "1.95.0",
+            "org_db_package": "org.Mm.eg.db",
+            "org_db_version": "3.22.0",
+            "r_version": "4.5.3",
+            "species_code": "MMU",
+            "n_pathways": "1815",
+            "n_pairs": "86198"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 1157,
+              "n_dropped_pairs": 472
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 289149,
+              "n_dropped_pairs": 246717
+            },
+            "LOW": {
+              "n_kept_pairs": 544789,
+              "n_dropped_pairs": 589108
+            }
+          }
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "n_terms_total": 214,
+          "n_universe": 4831,
+          "provenance": {
+            "wikipathways_release": "20260610",
+            "wikipathways_species": "Mus_musculus",
+            "gmt_filename": "wikipathways-20260610-gmt-Mus_musculus.gmt",
+            "gmt_url": "https://data.wikipathways.org/20260610/gmt/wikipathways-20260610-gmt-Mus_musculus.gmt",
+            "gmt_sha256": "0bf693ff2bce8a5dff828f053e740630b93fc4c3a2060a539e20c1e9c6c6925b",
+            "gmt_size_bytes": "93819",
+            "n_pathways_in_gmt": "214",
+            "n_pathways_mapped": "214",
+            "n_entrez_pairs_mapped": "10875",
+            "n_entrez_pairs_unmapped": "0",
+            "org_db_package": "org.Mm.eg.db",
+            "org_db_version": "3.22.0",
+            "r_version": "4.5.3"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 1222,
+              "n_dropped_pairs": 407
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 166612,
+              "n_dropped_pairs": 369254
+            },
+            "LOW": {
+              "n_kept_pairs": 312609,
+              "n_dropped_pairs": 821288
+            }
+          }
+        },
+        {
+          "family": "GO_BP",
+          "n_terms_total": 15169,
+          "n_universe": 25730,
+          "provenance": {
+            "org_db_package": "org.Mm.eg.db",
+            "org_db_version": "3.22.0",
+            "go_db_version": "3.22.0",
+            "r_version": "4.5.3",
+            "go_columns": "GOALL/ONTOLOGYALL",
+            "n_pairs": "2083200",
+            "go_propagation": "all"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 1585,
+              "n_dropped_pairs": 44
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 505896,
+              "n_dropped_pairs": 29970
+            },
+            "LOW": {
+              "n_kept_pairs": 1085241,
+              "n_dropped_pairs": 48656
+            }
+          }
+        },
+        {
+          "family": "GO_CC",
+          "n_terms_total": 2004,
+          "n_universe": 25856,
+          "provenance": {
+            "org_db_package": "org.Mm.eg.db",
+            "org_db_version": "3.22.0",
+            "go_db_version": "3.22.0",
+            "r_version": "4.5.3",
+            "go_columns": "GOALL/ONTOLOGYALL",
+            "n_pairs": "2083200",
+            "go_propagation": "all"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 1592,
+              "n_dropped_pairs": 37
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 511077,
+              "n_dropped_pairs": 24789
+            },
+            "LOW": {
+              "n_kept_pairs": 1098887,
+              "n_dropped_pairs": 35010
+            }
+          }
+        },
+        {
+          "family": "GO_MF",
+          "n_terms_total": 5110,
+          "n_universe": 23909,
+          "provenance": {
+            "org_db_package": "org.Mm.eg.db",
+            "org_db_version": "3.22.0",
+            "go_db_version": "3.22.0",
+            "r_version": "4.5.3",
+            "go_columns": "GOALL/ONTOLOGYALL",
+            "n_pairs": "2083200",
+            "go_propagation": "all"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 1586,
+              "n_dropped_pairs": 43
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 502791,
+              "n_dropped_pairs": 33075
+            },
+            "LOW": {
+              "n_kept_pairs": 1083254,
+              "n_dropped_pairs": 50643
+            }
+          }
+        }
+      ],
+      "per_source_census": {
+        "mirtarbase": {
+          "n_rows": 116693,
+          "n_mirnas_strong": 292,
+          "n_mirnas_weak": 2400
+        },
+        "diana_tarbase": {
+          "n_rows": 1110312,
+          "n_mirnas_high": 81,
+          "n_mirnas_medium": 1625,
+          "tier_rule": "HIGH = confidence==1 AND gene-specific assay (method not in CLIP_METHODS and not in KNOWN_OTHER_METHODS); else MEDIUM"
+        },
+        "targetscan": {
+          "n_rows": 164507,
+          "n_mirnas": 319
+        },
+        "mirdb": {
+          "n_rows": 1479058,
+          "n_mirnas": 1978,
+          "n_mapped_pairs": 1478487,
+          "n_unmapped_pairs": 571
+        }
+      },
+      "per_tier_raw": {
+        "HIGH": {
+          "n_mirnas": 299,
+          "n_genes": 893,
+          "n_pairs": 1629
+        },
+        "MEDIUM": {
+          "n_mirnas": 3215,
+          "n_genes": 17771,
+          "n_pairs": 535866
+        },
+        "LOW": {
+          "n_mirnas": 2010,
+          "n_genes": 28665,
+          "n_pairs": 1133897
+        }
+      },
+      "census_notes": {
+        "mirdb": "571 RefSeq targets dropped (no SYMBOL in org.db); 1478487 mapped"
+      },
+      "cells": [
+        {
+          "organism": "mmu",
+          "family": "REACTOME",
+          "tier": "HIGH",
+          "n_mirnas": 269,
+          "n_pathways_scored": 1249,
+          "n_pathways_total": 1815,
+          "n_universe": 8778,
+          "elapsed_s": 10.66,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "269",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_REACTOME_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/REACTOME_HIGH.tsv",
+          "n_significant_rows": 12555
+        },
+        {
+          "organism": "mmu",
+          "family": "REACTOME",
+          "tier": "MEDIUM",
+          "n_mirnas": 2571,
+          "n_pathways_scored": 1811,
+          "n_pathways_total": 1815,
+          "n_universe": 8778,
+          "elapsed_s": 32.73,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "2571",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_REACTOME_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/REACTOME_MEDIUM.tsv",
+          "n_significant_rows": 122145
+        },
+        {
+          "organism": "mmu",
+          "family": "REACTOME",
+          "tier": "LOW",
+          "n_mirnas": 2989,
+          "n_pathways_scored": 1814,
+          "n_pathways_total": 1815,
+          "n_universe": 8778,
+          "elapsed_s": 59.32,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "2989",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_REACTOME_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/REACTOME_LOW.tsv",
+          "n_significant_rows": 92678
+        },
+        {
+          "organism": "mmu",
+          "family": "WIKIPATHWAYS",
+          "tier": "HIGH",
+          "n_mirnas": 268,
+          "n_pathways_scored": 184,
+          "n_pathways_total": 214,
+          "n_universe": 4831,
+          "elapsed_s": 8.9,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "268",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_WIKIPATHWAYS_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/WIKIPATHWAYS_HIGH.tsv",
+          "n_significant_rows": 4342
+        },
+        {
+          "organism": "mmu",
+          "family": "WIKIPATHWAYS",
+          "tier": "MEDIUM",
+          "n_mirnas": 2504,
+          "n_pathways_scored": 214,
+          "n_pathways_total": 214,
+          "n_universe": 4831,
+          "elapsed_s": 12.84,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "2504",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_WIKIPATHWAYS_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/WIKIPATHWAYS_MEDIUM.tsv",
+          "n_significant_rows": 23839
+        },
+        {
+          "organism": "mmu",
+          "family": "WIKIPATHWAYS",
+          "tier": "LOW",
+          "n_mirnas": 3046,
+          "n_pathways_scored": 214,
+          "n_pathways_total": 214,
+          "n_universe": 4831,
+          "elapsed_s": 16.16,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "3046",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_WIKIPATHWAYS_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/WIKIPATHWAYS_LOW.tsv",
+          "n_significant_rows": 25317
+        },
+        {
+          "organism": "mmu",
+          "family": "GO_BP",
+          "tier": "HIGH",
+          "n_mirnas": 296,
+          "n_pathways_scored": 9422,
+          "n_pathways_total": 15169,
+          "n_universe": 25730,
+          "elapsed_s": 55.38,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "296",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_GO_BP_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/GO_BP_HIGH.tsv",
+          "n_significant_rows": 225764
+        },
+        {
+          "organism": "mmu",
+          "family": "GO_BP",
+          "tier": "MEDIUM",
+          "n_mirnas": 3156,
+          "n_pathways_scored": 15013,
+          "n_pathways_total": 15169,
+          "n_universe": 25730,
+          "elapsed_s": 488.85,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "3156",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_GO_BP_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/GO_BP_MEDIUM.tsv",
+          "n_significant_rows": 2142959
+        },
+        {
+          "organism": "mmu",
+          "family": "GO_BP",
+          "tier": "LOW",
+          "n_mirnas": 3432,
+          "n_pathways_scored": 15146,
+          "n_pathways_total": 15169,
+          "n_universe": 25730,
+          "elapsed_s": 984.61,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "3432",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_GO_BP_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/GO_BP_LOW.tsv",
+          "n_significant_rows": 4859919
+        },
+        {
+          "organism": "mmu",
+          "family": "GO_CC",
+          "tier": "HIGH",
+          "n_mirnas": 297,
+          "n_pathways_scored": 966,
+          "n_pathways_total": 2004,
+          "n_universe": 25856,
+          "elapsed_s": 20.05,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "297",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_GO_CC_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/GO_CC_HIGH.tsv",
+          "n_significant_rows": 13112
+        },
+        {
+          "organism": "mmu",
+          "family": "GO_CC",
+          "tier": "MEDIUM",
+          "n_mirnas": 3149,
+          "n_pathways_scored": 1976,
+          "n_pathways_total": 2004,
+          "n_universe": 25856,
+          "elapsed_s": 112.8,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "3149",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_GO_CC_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/GO_CC_MEDIUM.tsv",
+          "n_significant_rows": 259414
+        },
+        {
+          "organism": "mmu",
+          "family": "GO_CC",
+          "tier": "LOW",
+          "n_mirnas": 3426,
+          "n_pathways_scored": 1997,
+          "n_pathways_total": 2004,
+          "n_universe": 25856,
+          "elapsed_s": 175.63,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "3426",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_GO_CC_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/GO_CC_LOW.tsv",
+          "n_significant_rows": 622080
+        },
+        {
+          "organism": "mmu",
+          "family": "GO_MF",
+          "tier": "HIGH",
+          "n_mirnas": 297,
+          "n_pathways_scored": 1676,
+          "n_pathways_total": 5110,
+          "n_universe": 23909,
+          "elapsed_s": 17.04,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "297",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_GO_MF_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/GO_MF_HIGH.tsv",
+          "n_significant_rows": 19702
+        },
+        {
+          "organism": "mmu",
+          "family": "GO_MF",
+          "tier": "MEDIUM",
+          "n_mirnas": 3144,
+          "n_pathways_scored": 4987,
+          "n_pathways_total": 5110,
+          "n_universe": 23909,
+          "elapsed_s": 102.38,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "3144",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_GO_MF_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/GO_MF_MEDIUM.tsv",
+          "n_significant_rows": 366336
+        },
+        {
+          "organism": "mmu",
+          "family": "GO_MF",
+          "tier": "LOW",
+          "n_mirnas": 3426,
+          "n_pathways_scored": 5085,
+          "n_pathways_total": 5110,
+          "n_universe": 23909,
+          "elapsed_s": 197.22,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "3426",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/mmu/prod_GO_MF_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/mmu/GO_MF_LOW.tsv",
+          "n_significant_rows": 845657
+        }
+      ],
+      "sanity": [
+        {
+          "family": "REACTOME",
+          "tier": "HIGH",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 27,
+          "top_pathways": [
+            {
+              "pathway_id": "R-MMU-2428933",
+              "pvalue": 0.000135639196617687,
+              "p_adjust": 0.0257269173651087,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "R-MMU-9006934",
+              "pvalue": 0.000165446413923528,
+              "p_adjust": 0.0257269173651087,
+              "overlap": 7
+            },
+            {
+              "pathway_id": "R-MMU-114608",
+              "pvalue": 0.000351446860293127,
+              "p_adjust": 0.0322764629212352,
+              "overlap": 4
+            },
+            {
+              "pathway_id": "R-MMU-76005",
+              "pvalue": 0.000415131355900131,
+              "p_adjust": 0.0322764629212352,
+              "overlap": 4
+            },
+            {
+              "pathway_id": "R-MMU-76002",
+              "pvalue": 0.000695876699834403,
+              "p_adjust": 0.0432835307296999,
+              "overlap": 5
+            },
+            {
+              "pathway_id": "R-MMU-397014",
+              "pvalue": 0.00105851448824588,
+              "p_adjust": 0.0468203467193029,
+              "overlap": 4
+            },
+            {
+              "pathway_id": "R-MMU-9933939",
+              "pvalue": 0.00106470757867047,
+              "p_adjust": 0.0468203467193029,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "R-MMU-5627123",
+              "pvalue": 0.00120438190917821,
+              "p_adjust": 0.0468203467193029,
+              "overlap": 2
+            }
+          ]
+        },
+        {
+          "family": "REACTOME",
+          "tier": "MEDIUM",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 3766,
+          "top_pathways": [
+            {
+              "pathway_id": "R-MMU-1640170",
+              "pvalue": 1.93300834329788e-34,
+              "p_adjust": 3.29771223366619e-31,
+              "overlap": 402
+            },
+            {
+              "pathway_id": "R-MMU-69278",
+              "pvalue": 9.42617442248182e-30,
+              "p_adjust": 8.04052678237699e-27,
+              "overlap": 343
+            },
+            {
+              "pathway_id": "R-MMU-8953854",
+              "pvalue": 4.92736533558922e-22,
+              "p_adjust": 2.8020284208384e-19,
+              "overlap": 367
+            },
+            {
+              "pathway_id": "R-MMU-68886",
+              "pvalue": 6.12988781614809e-21,
+              "p_adjust": 2.61439715358716e-18,
+              "overlap": 255
+            },
+            {
+              "pathway_id": "R-MMU-68877",
+              "pvalue": 6.01441789010011e-16,
+              "p_adjust": 2.05211938410216e-13,
+              "overlap": 136
+            },
+            {
+              "pathway_id": "R-MMU-74160",
+              "pvalue": 1.51407950902928e-15,
+              "p_adjust": 4.30503273733992e-13,
+              "overlap": 556
+            },
+            {
+              "pathway_id": "R-MMU-69620",
+              "pvalue": 1.11661407803731e-13,
+              "p_adjust": 2.7213480244738e-11,
+              "overlap": 178
+            },
+            {
+              "pathway_id": "R-MMU-73857",
+              "pvalue": 3.00609866536036e-13,
+              "p_adjust": 6.41050540388096e-11,
+              "overlap": 499
+            }
+          ]
+        },
+        {
+          "family": "REACTOME",
+          "tier": "LOW",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 3917,
+          "top_pathways": [
+            {
+              "pathway_id": "R-MMU-1640170",
+              "pvalue": 4.59100318748744e-32,
+              "p_adjust": 7.84602444741604e-29,
+              "overlap": 407
+            },
+            {
+              "pathway_id": "R-MMU-69278",
+              "pvalue": 1.25888361477276e-27,
+              "p_adjust": 1.07571604882333e-24,
+              "overlap": 347
+            },
+            {
+              "pathway_id": "R-MMU-8953854",
+              "pvalue": 2.59186812739463e-22,
+              "p_adjust": 1.47650087657247e-19,
+              "overlap": 378
+            },
+            {
+              "pathway_id": "R-MMU-68886",
+              "pvalue": 7.83603829681826e-20,
+              "p_adjust": 3.3479473623156e-17,
+              "overlap": 259
+            },
+            {
+              "pathway_id": "R-MMU-74160",
+              "pvalue": 2.65182710447953e-16,
+              "p_adjust": 9.06394504311103e-14,
+              "overlap": 577
+            },
+            {
+              "pathway_id": "R-MMU-68877",
+              "pvalue": 2.48870330724933e-15,
+              "p_adjust": 7.08865658681519e-13,
+              "overlap": 138
+            },
+            {
+              "pathway_id": "R-MMU-73857",
+              "pvalue": 6.59376604408705e-14,
+              "p_adjust": 1.60982088133497e-11,
+              "overlap": 518
+            },
+            {
+              "pathway_id": "R-MMU-212436",
+              "pvalue": 9.05437363121559e-14,
+              "p_adjust": 1.93424056696843e-11,
+              "overlap": 459
+            }
+          ]
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "tier": "HIGH",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 36,
+          "top_pathways": [
+            {
+              "pathway_id": "WP608",
+              "pvalue": 0.000161236853092363,
+              "p_adjust": 0.0122540008350196,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "WP1560",
+              "pvalue": 0.000329004020851413,
+              "p_adjust": 0.0125021527923537,
+              "overlap": 5
+            },
+            {
+              "pathway_id": "WP5242",
+              "pvalue": 0.000890903054636865,
+              "p_adjust": 0.0225695440508006,
+              "overlap": 5
+            },
+            {
+              "pathway_id": "WP5023",
+              "pvalue": 0.00399994246024852,
+              "p_adjust": 0.0602714616599183,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "WP2152",
+              "pvalue": 0.00533436226381568,
+              "p_adjust": 0.0602714616599183,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "WP5056",
+              "pvalue": 0.00533436226381568,
+              "p_adjust": 0.0602714616599183,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "WP512",
+              "pvalue": 0.00619337771918147,
+              "p_adjust": 0.0602714616599183,
+              "overlap": 3
+            },
+            {
+              "pathway_id": "WP2074",
+              "pvalue": 0.00634436438525456,
+              "p_adjust": 0.0602714616599183,
+              "overlap": 4
+            }
+          ]
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "tier": "MEDIUM",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 1980,
+          "top_pathways": [
+            {
+              "pathway_id": "WP310",
+              "pvalue": 1.29019736781005e-12,
+              "p_adjust": 2.73521841975732e-10,
+              "overlap": 258
+            },
+            {
+              "pathway_id": "WP190",
+              "pvalue": 2.09110834544364e-09,
+              "p_adjust": 2.21657484617025e-07,
+              "overlap": 63
+            },
+            {
+              "pathway_id": "WP246",
+              "pvalue": 4.15149220188396e-07,
+              "p_adjust": 2.933721155998e-05,
+              "overlap": 107
+            },
+            {
+              "pathway_id": "WP413",
+              "pvalue": 7.12745773634882e-07,
+              "p_adjust": 3.77755260026487e-05,
+              "overlap": 44
+            },
+            {
+              "pathway_id": "WP6",
+              "pvalue": 2.30508206104101e-06,
+              "p_adjust": 9.77354793881386e-05,
+              "overlap": 64
+            },
+            {
+              "pathway_id": "WP5242",
+              "pvalue": 3.92815881920688e-06,
+              "p_adjust": 0.00013879494494531,
+              "overlap": 65
+            },
+            {
+              "pathway_id": "WP163",
+              "pvalue": 1.12551516839449e-05,
+              "p_adjust": 0.000298543852087599,
+              "overlap": 53
+            },
+            {
+              "pathway_id": "WP1763",
+              "pvalue": 1.12658057391547e-05,
+              "p_adjust": 0.000298543852087599,
+              "overlap": 155
+            }
+          ]
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "tier": "LOW",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 2085,
+          "top_pathways": [
+            {
+              "pathway_id": "WP310",
+              "pvalue": 6.92923514638733e-13,
+              "p_adjust": 1.4759270861805e-10,
+              "overlap": 269
+            },
+            {
+              "pathway_id": "WP190",
+              "pvalue": 2.38270685041593e-08,
+              "p_adjust": 2.53758279569296e-06,
+              "overlap": 63
+            },
+            {
+              "pathway_id": "WP1763",
+              "pvalue": 8.54985222362121e-07,
+              "p_adjust": 4.79103941322017e-05,
+              "overlap": 166
+            },
+            {
+              "pathway_id": "WP246",
+              "pvalue": 8.9972571140285e-07,
+              "p_adjust": 4.79103941322017e-05,
+              "overlap": 110
+            },
+            {
+              "pathway_id": "WP413",
+              "pvalue": 3.86032632426923e-06,
+              "p_adjust": 0.000164449901413869,
+              "overlap": 44
+            },
+            {
+              "pathway_id": "WP6",
+              "pvalue": 7.22568747738573e-06,
+              "p_adjust": 0.000256511905447193,
+              "overlap": 65
+            },
+            {
+              "pathway_id": "WP5242",
+              "pvalue": 1.25524118734866e-05,
+              "p_adjust": 0.000381951961293234,
+              "overlap": 66
+            },
+            {
+              "pathway_id": "WP163",
+              "pvalue": 6.36309561469575e-05,
+              "p_adjust": 0.00161293082806039,
+              "overlap": 53
+            }
+          ]
+        },
+        {
+          "family": "GO_BP",
+          "tier": "HIGH",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 43,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0048522",
+              "pvalue": 2.57668624950151e-18,
+              "p_adjust": 7.28686871359027e-15,
+              "overlap": 38
+            },
+            {
+              "pathway_id": "GO:0010604",
+              "pvalue": 9.81005973360491e-18,
+              "p_adjust": 1.3780883645559e-14,
+              "overlap": 30
+            },
+            {
+              "pathway_id": "GO:0009893",
+              "pvalue": 1.46190420568165e-17,
+              "p_adjust": 1.3780883645559e-14,
+              "overlap": 31
+            },
+            {
+              "pathway_id": "GO:0048518",
+              "pvalue": 2.4540513684351e-17,
+              "p_adjust": 1.73501431748361e-14,
+              "overlap": 38
+            },
+            {
+              "pathway_id": "GO:0009891",
+              "pvalue": 1.01387687934452e-16,
+              "p_adjust": 5.73448762957262e-14,
+              "overlap": 28
+            },
+            {
+              "pathway_id": "GO:0061061",
+              "pvalue": 1.47172743027723e-16,
+              "p_adjust": 6.93674195470667e-14,
+              "overlap": 18
+            },
+            {
+              "pathway_id": "GO:0051239",
+              "pvalue": 2.94905014320777e-16,
+              "p_adjust": 1.19141625785594e-13,
+              "overlap": 29
+            },
+            {
+              "pathway_id": "GO:0010557",
+              "pvalue": 3.87207129565701e-16,
+              "p_adjust": 1.36877720301475e-13,
+              "overlap": 27
+            }
+          ]
+        },
+        {
+          "family": "GO_BP",
+          "tier": "MEDIUM",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 7022,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0009987",
+              "pvalue": 4.27079560442045e-216,
+              "p_adjust": 5.41280634904248e-212,
+              "overlap": 6525
+            },
+            {
+              "pathway_id": "GO:0080090",
+              "pvalue": 9.68153982234572e-171,
+              "p_adjust": 6.13519178542048e-167,
+              "overlap": 2207
+            },
+            {
+              "pathway_id": "GO:0071840",
+              "pvalue": 3.31483813025277e-164,
+              "p_adjust": 1.40040861542745e-160,
+              "overlap": 3138
+            },
+            {
+              "pathway_id": "GO:0006996",
+              "pvalue": 3.72096940089338e-163,
+              "p_adjust": 1.17898915467307e-159,
+              "overlap": 1734
+            },
+            {
+              "pathway_id": "GO:0019222",
+              "pvalue": 8.58858303836272e-149,
+              "p_adjust": 2.17703402856418e-145,
+              "overlap": 2648
+            },
+            {
+              "pathway_id": "GO:0065007",
+              "pvalue": 4.57231865469159e-148,
+              "p_adjust": 9.65826110492686e-145,
+              "overlap": 4654
+            },
+            {
+              "pathway_id": "GO:0048522",
+              "pvalue": 7.23636683162754e-148,
+              "p_adjust": 1.31019590320068e-144,
+              "overlap": 2569
+            },
+            {
+              "pathway_id": "GO:0048518",
+              "pvalue": 1.17752180987297e-147,
+              "p_adjust": 1.86548892729126e-144,
+              "overlap": 2695
+            }
+          ]
+        },
+        {
+          "family": "GO_BP",
+          "tier": "LOW",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 7357,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0009987",
+              "pvalue": 4.39136090992487e-228,
+              "p_adjust": 5.65914680462018e-224,
+              "overlap": 6834
+            },
+            {
+              "pathway_id": "GO:0080090",
+              "pvalue": 1.19408598370644e-189,
+              "p_adjust": 7.69409303601243e-186,
+              "overlap": 2329
+            },
+            {
+              "pathway_id": "GO:0071840",
+              "pvalue": 2.82841588853332e-172,
+              "p_adjust": 1.2149931851843e-168,
+              "overlap": 3279
+            },
+            {
+              "pathway_id": "GO:0048518",
+              "pvalue": 1.07418482374623e-169,
+              "p_adjust": 3.46075495590441e-166,
+              "overlap": 2857
+            },
+            {
+              "pathway_id": "GO:0048522",
+              "pvalue": 1.93996322117188e-169,
+              "p_adjust": 5.00006120624839e-166,
+              "overlap": 2723
+            },
+            {
+              "pathway_id": "GO:0019222",
+              "pvalue": 1.74788401996184e-167,
+              "p_adjust": 3.75416356087471e-164,
+              "overlap": 2798
+            },
+            {
+              "pathway_id": "GO:0006996",
+              "pvalue": 1.67170994042956e-166,
+              "p_adjust": 3.07761800033081e-163,
+              "overlap": 1798
+            },
+            {
+              "pathway_id": "GO:0065007",
+              "pvalue": 2.16042052879949e-165,
+              "p_adjust": 3.48016741932987e-162,
+              "overlap": 4899
+            }
+          ]
+        },
+        {
+          "family": "GO_CC",
+          "tier": "HIGH",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 43,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0099080",
+              "pvalue": 6.52559782548324e-09,
+              "p_adjust": 2.09471690198012e-06,
+              "overlap": 17
+            },
+            {
+              "pathway_id": "GO:0005667",
+              "pvalue": 2.01037163927498e-08,
+              "p_adjust": 2.85389028226393e-06,
+              "overlap": 10
+            },
+            {
+              "pathway_id": "GO:0043226",
+              "pvalue": 2.66718717968591e-08,
+              "p_adjust": 2.85389028226393e-06,
+              "overlap": 42
+            },
+            {
+              "pathway_id": "GO:0032991",
+              "pvalue": 3.80458343326452e-08,
+              "p_adjust": 3.05317820519477e-06,
+              "overlap": 30
+            },
+            {
+              "pathway_id": "GO:0000785",
+              "pvalue": 8.75633376149218e-08,
+              "p_adjust": 5.62156627487798e-06,
+              "overlap": 11
+            },
+            {
+              "pathway_id": "GO:0043229",
+              "pvalue": 1.42807332228424e-07,
+              "p_adjust": 7.64019227422068e-06,
+              "overlap": 41
+            },
+            {
+              "pathway_id": "GO:0043292",
+              "pvalue": 2.92791114044473e-07,
+              "p_adjust": 1.34265639440394e-05,
+              "overlap": 7
+            },
+            {
+              "pathway_id": "GO:0005622",
+              "pvalue": 5.26766558652488e-07,
+              "p_adjust": 2.11365081659311e-05,
+              "overlap": 42
+            }
+          ]
+        },
+        {
+          "family": "GO_CC",
+          "tier": "MEDIUM",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 7107,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0005622",
+              "pvalue": 0.0,
+              "p_adjust": 0.0,
+              "overlap": 6134
+            },
+            {
+              "pathway_id": "GO:0005737",
+              "pvalue": 0.0,
+              "p_adjust": 0.0,
+              "overlap": 4940
+            },
+            {
+              "pathway_id": "GO:0043226",
+              "pvalue": 6.276423707e-315,
+              "p_adjust": 3.684260715985e-312,
+              "overlap": 5670
+            },
+            {
+              "pathway_id": "GO:0043229",
+              "pvalue": 2.1446251492593e-311,
+              "p_adjust": 9.44171221961386e-309,
+              "overlap": 5570
+            },
+            {
+              "pathway_id": "GO:0043227",
+              "pvalue": 8.26957825303597e-263,
+              "p_adjust": 2.91254546071927e-260,
+              "overlap": 5292
+            },
+            {
+              "pathway_id": "GO:0110165",
+              "pvalue": 6.64431829243964e-259,
+              "p_adjust": 1.95010741883103e-256,
+              "overlap": 6888
+            },
+            {
+              "pathway_id": "GO:0043231",
+              "pvalue": 1.36400414329877e-247,
+              "p_adjust": 3.4314447090702e-245,
+              "overlap": 5117
+            },
+            {
+              "pathway_id": "GO:0005654",
+              "pvalue": 9.46898005479759e-231,
+              "p_adjust": 2.08435923456232e-228,
+              "overlap": 1962
+            }
+          ]
+        },
+        {
+          "family": "GO_CC",
+          "tier": "LOW",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 7448,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0005622",
+              "pvalue": 0.0,
+              "p_adjust": 0.0,
+              "overlap": 6403
+            },
+            {
+              "pathway_id": "GO:0005737",
+              "pvalue": 0.0,
+              "p_adjust": 0.0,
+              "overlap": 5145
+            },
+            {
+              "pathway_id": "GO:0043226",
+              "pvalue": 1.314e-321,
+              "p_adjust": 7.7451e-319,
+              "overlap": 5915
+            },
+            {
+              "pathway_id": "GO:0043229",
+              "pvalue": 4.7527686e-316,
+              "p_adjust": 2.10072371227e-313,
+              "overlap": 5806
+            },
+            {
+              "pathway_id": "GO:0110165",
+              "pvalue": 9.87012633513413e-277,
+              "p_adjust": 3.49007667210343e-274,
+              "overlap": 7221
+            },
+            {
+              "pathway_id": "GO:0043227",
+              "pvalue": 1.40282302245639e-267,
+              "p_adjust": 4.13365183950483e-265,
+              "overlap": 5518
+            },
+            {
+              "pathway_id": "GO:0043231",
+              "pvalue": 5.38967057384999e-253,
+              "p_adjust": 1.36127679636668e-250,
+              "overlap": 5337
+            },
+            {
+              "pathway_id": "GO:0005654",
+              "pvalue": 1.88070444549252e-243,
+              "p_adjust": 4.15635682453848e-241,
+              "overlap": 2048
+            }
+          ]
+        },
+        {
+          "family": "GO_MF",
+          "tier": "HIGH",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 43,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0005515",
+              "pvalue": 7.30937651024056e-13,
+              "p_adjust": 2.27722508873856e-10,
+              "overlap": 40
+            },
+            {
+              "pathway_id": "GO:0019899",
+              "pvalue": 1.1799093724034e-12,
+              "p_adjust": 2.27722508873856e-10,
+              "overlap": 23
+            },
+            {
+              "pathway_id": "GO:0061629",
+              "pvalue": 5.93594525333775e-11,
+              "p_adjust": 7.08820717880018e-09,
+              "overlap": 11
+            },
+            {
+              "pathway_id": "GO:0019901",
+              "pvalue": 8.54492898880547e-11,
+              "p_adjust": 7.08820717880018e-09,
+              "overlap": 14
+            },
+            {
+              "pathway_id": "GO:0008134",
+              "pvalue": 9.18161551658054e-11,
+              "p_adjust": 7.08820717880018e-09,
+              "overlap": 13
+            },
+            {
+              "pathway_id": "GO:0140297",
+              "pvalue": 1.32090155382891e-10,
+              "p_adjust": 8.49779999629935e-09,
+              "overlap": 12
+            },
+            {
+              "pathway_id": "GO:0019900",
+              "pvalue": 3.39684543078992e-10,
+              "p_adjust": 1.87180326441345e-08,
+              "overlap": 14
+            },
+            {
+              "pathway_id": "GO:0003690",
+              "pvalue": 3.8793850039657e-10,
+              "p_adjust": 1.87180326441345e-08,
+              "overlap": 17
+            }
+          ]
+        },
+        {
+          "family": "GO_MF",
+          "tier": "MEDIUM",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 6970,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0005515",
+              "pvalue": 1.73935673506496e-207,
+              "p_adjust": 6.45649220056113e-204,
+              "overlap": 3915
+            },
+            {
+              "pathway_id": "GO:0005488",
+              "pvalue": 2.43961681907981e-184,
+              "p_adjust": 4.52792881621212e-181,
+              "overlap": 5534
+            },
+            {
+              "pathway_id": "GO:0043167",
+              "pvalue": 1.2520807401041e-139,
+              "p_adjust": 1.54924123575547e-136,
+              "overlap": 2584
+            },
+            {
+              "pathway_id": "GO:0036094",
+              "pvalue": 5.73100933291769e-138,
+              "p_adjust": 5.31837666094762e-135,
+              "overlap": 2653
+            },
+            {
+              "pathway_id": "GO:0003824",
+              "pvalue": 1.0460334061524e-128,
+              "p_adjust": 7.76575200727545e-126,
+              "overlap": 2400
+            },
+            {
+              "pathway_id": "GO:0000166",
+              "pvalue": 1.45649713541494e-84,
+              "p_adjust": 8.57892703553442e-82,
+              "overlap": 1046
+            },
+            {
+              "pathway_id": "GO:0043169",
+              "pvalue": 1.61779335260617e-84,
+              "p_adjust": 8.57892703553442e-82,
+              "overlap": 1855
+            },
+            {
+              "pathway_id": "GO:1901265",
+              "pvalue": 3.3293998186866e-84,
+              "p_adjust": 1.54484151587058e-81,
+              "overlap": 1054
+            }
+          ]
+        },
+        {
+          "family": "GO_MF",
+          "tier": "LOW",
+          "mirna": "mmu-miR-1a-3p",
+          "n_targets": 7308,
+          "top_pathways": [
+            {
+              "pathway_id": "GO:0005515",
+              "pvalue": 1.85298935831297e-230,
+              "p_adjust": 7.00429977442303e-227,
+              "overlap": 4126
+            },
+            {
+              "pathway_id": "GO:0005488",
+              "pvalue": 1.35667504447119e-198,
+              "p_adjust": 2.56411583405055e-195,
+              "overlap": 5807
+            },
+            {
+              "pathway_id": "GO:0036094",
+              "pvalue": 1.88639675248722e-141,
+              "p_adjust": 2.3768599081339e-138,
+              "overlap": 2763
+            },
+            {
+              "pathway_id": "GO:0043167",
+              "pvalue": 1.56087987615305e-140,
+              "p_adjust": 1.47503148296463e-137,
+              "overlap": 2683
+            },
+            {
+              "pathway_id": "GO:0003824",
+              "pvalue": 5.01936883147968e-124,
+              "p_adjust": 3.79464283659864e-121,
+              "overlap": 2475
+            },
+            {
+              "pathway_id": "GO:0043169",
+              "pvalue": 5.69181464940746e-87,
+              "p_adjust": 3.5858432291267e-84,
+              "overlap": 1933
+            },
+            {
+              "pathway_id": "GO:0046872",
+              "pvalue": 1.44985826674083e-85,
+              "p_adjust": 7.8292346404005e-83,
+              "overlap": 1891
+            },
+            {
+              "pathway_id": "GO:0000166",
+              "pvalue": 3.57817506019472e-81,
+              "p_adjust": 1.69068771594201e-78,
+              "overlap": 1072
+            }
+          ]
+        }
+      ],
+      "organism_wall_s": 2491.7
+    },
+    {
+      "organism": "rno",
+      "taxid": 10116,
+      "org_db_package": "org.Rn.eg.db",
+      "families": [
+        {
+          "family": "REACTOME",
+          "n_terms_total": 1796,
+          "n_universe": 7055,
+          "provenance": {
+            "reactome_db_version": "1.95.0",
+            "org_db_package": "org.Rn.eg.db",
+            "org_db_version": "3.22.0",
+            "r_version": "4.5.3",
+            "species_code": "RNO",
+            "n_pathways": "1796",
+            "n_pairs": "69638"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 306,
+              "n_dropped_pairs": 140
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 864,
+              "n_dropped_pairs": 867
+            },
+            "LOW": {
+              "n_kept_pairs": 129534,
+              "n_dropped_pairs": 181042
+            }
+          }
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "n_terms_total": 128,
+          "n_universe": 2515,
+          "provenance": {
+            "wikipathways_release": "20260610",
+            "wikipathways_species": "Rattus_norvegicus",
+            "gmt_filename": "wikipathways-20260610-gmt-Rattus_norvegicus.gmt",
+            "gmt_url": "https://data.wikipathways.org/20260610/gmt/wikipathways-20260610-gmt-Rattus_norvegicus.gmt",
+            "gmt_sha256": "80434a4e0f07b8869dd3665992094d584619f7e61c6029ebaf1c3e7c976af00f",
+            "gmt_size_bytes": "45680",
+            "n_pathways_in_gmt": "128",
+            "n_pathways_mapped": "128",
+            "n_entrez_pairs_mapped": "4631",
+            "n_entrez_pairs_unmapped": "4",
+            "org_db_package": "org.Rn.eg.db",
+            "org_db_version": "3.22.0",
+            "r_version": "4.5.3"
+          },
+          "symbol_normalization": {
+            "HIGH": {
+              "n_kept_pairs": 225,
+              "n_dropped_pairs": 221
+            },
+            "MEDIUM": {
+              "n_kept_pairs": 513,
+              "n_dropped_pairs": 1218
+            },
+            "LOW": {
+              "n_kept_pairs": 51156,
+              "n_dropped_pairs": 259420
+            }
+          }
+        }
+      ],
+      "per_source_census": {
+        "mirtarbase": {
+          "n_rows": 1384,
+          "n_mirnas_strong": 144,
+          "n_mirnas_weak": 239
+        },
+        "diana_tarbase": {
+          "n_rows": 1125,
+          "n_mirnas_high": 23,
+          "n_mirnas_medium": 11,
+          "tier_rule": "HIGH = confidence==1 AND gene-specific assay (method not in CLIP_METHODS and not in KNOWN_OTHER_METHODS); else MEDIUM"
+        },
+        "targetscan": {
+          "n_rows": 138997,
+          "n_mirnas": 277
+        },
+        "mirdb": {
+          "n_rows": 200619,
+          "n_mirnas": 764,
+          "n_mapped_pairs": 198709,
+          "n_unmapped_pairs": 1910
+        }
+      },
+      "per_tier_raw": {
+        "HIGH": {
+          "n_mirnas": 150,
+          "n_genes": 291,
+          "n_pairs": 446
+        },
+        "MEDIUM": {
+          "n_mirnas": 240,
+          "n_genes": 1334,
+          "n_pairs": 1731
+        },
+        "LOW": {
+          "n_mirnas": 764,
+          "n_genes": 22872,
+          "n_pairs": 310576
+        }
+      },
+      "census_notes": {
+        "mirdb": "1910 RefSeq targets dropped (no SYMBOL in org.db); 198709 mapped"
+      },
+      "cells": [
+        {
+          "organism": "rno",
+          "family": "REACTOME",
+          "tier": "HIGH",
+          "n_mirnas": 132,
+          "n_pathways_scored": 898,
+          "n_pathways_total": 1796,
+          "n_universe": 7055,
+          "elapsed_s": 10.28,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "132",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/rno/prod_REACTOME_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/REACTOME_HIGH.tsv",
+          "n_significant_rows": 3995
+        },
+        {
+          "organism": "rno",
+          "family": "REACTOME",
+          "tier": "MEDIUM",
+          "n_mirnas": 221,
+          "n_pathways_scored": 1331,
+          "n_pathways_total": 1796,
+          "n_universe": 7055,
+          "elapsed_s": 10.24,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "221",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/rno/prod_REACTOME_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/REACTOME_MEDIUM.tsv",
+          "n_significant_rows": 7459
+        },
+        {
+          "organism": "rno",
+          "family": "REACTOME",
+          "tier": "LOW",
+          "n_mirnas": 791,
+          "n_pathways_scored": 1786,
+          "n_pathways_total": 1796,
+          "n_universe": 7055,
+          "elapsed_s": 21.11,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "791",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/rno/prod_REACTOME_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/REACTOME_LOW.tsv",
+          "n_significant_rows": 15212
+        },
+        {
+          "organism": "rno",
+          "family": "WIKIPATHWAYS",
+          "tier": "HIGH",
+          "n_mirnas": 108,
+          "n_pathways_scored": 94,
+          "n_pathways_total": 128,
+          "n_universe": 2515,
+          "elapsed_s": 8.34,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "108",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/rno/prod_WIKIPATHWAYS_HIGH.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/WIKIPATHWAYS_HIGH.tsv",
+          "n_significant_rows": 684
+        },
+        {
+          "organism": "rno",
+          "family": "WIKIPATHWAYS",
+          "tier": "MEDIUM",
+          "n_mirnas": 190,
+          "n_pathways_scored": 105,
+          "n_pathways_total": 128,
+          "n_universe": 2515,
+          "elapsed_s": 8.0,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "190",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/rno/prod_WIKIPATHWAYS_MEDIUM.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/WIKIPATHWAYS_MEDIUM.tsv",
+          "n_significant_rows": 1111
+        },
+        {
+          "organism": "rno",
+          "family": "WIKIPATHWAYS",
+          "tier": "LOW",
+          "n_mirnas": 783,
+          "n_pathways_scored": 127,
+          "n_pathways_total": 128,
+          "n_universe": 2515,
+          "elapsed_s": 9.24,
+          "cp_provenance": {
+            "clusterprofiler_version": "4.18.4",
+            "r_version": "4.5.3",
+            "mc_cores": "96",
+            "detected_cores": "128",
+            "n_gene_sets": "783",
+            "n_worker_errors": "0",
+            "worker_error_examples": ""
+          },
+          "output": "data/processed/enrichment/rno/prod_WIKIPATHWAYS_LOW.csv",
+          "long_form_output": "data/processed/enrichment_significant/rno/WIKIPATHWAYS_LOW.tsv",
+          "n_significant_rows": 2553
+        }
+      ],
+      "sanity": [
+        {
+          "family": "REACTOME",
+          "tier": "HIGH",
+          "mirna": "rno-miR-1-3p",
+          "n_targets": 15,
+          "top_pathways": [
+            {
+              "pathway_id": "R-RNO-1296061",
+              "pvalue": 2.52563231723626e-05,
+              "p_adjust": 0.00323280936606241,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "R-RNO-1296071",
+              "pvalue": 0.000715842893645169,
+              "p_adjust": 0.0374766236019705,
+              "overlap": 3
+            },
+            {
+              "pathway_id": "R-RNO-114608",
+              "pvalue": 0.00127972877411759,
+              "p_adjust": 0.0374766236019705,
+              "overlap": 3
+            },
+            {
+              "pathway_id": "R-RNO-109582",
+              "pvalue": 0.00141995033995448,
+              "p_adjust": 0.0374766236019705,
+              "overlap": 5
+            },
+            {
+              "pathway_id": "R-RNO-76005",
+              "pvalue": 0.00146393060945197,
+              "p_adjust": 0.0374766236019705,
+              "overlap": 3
+            },
+            {
+              "pathway_id": "R-RNO-9652282",
+              "pvalue": 0.00424808358000472,
+              "p_adjust": 0.0906257830401008,
+              "overlap": 1
+            },
+            {
+              "pathway_id": "R-RNO-1296053",
+              "pvalue": 0.00636580352134919,
+              "p_adjust": 0.101852856341587,
+              "overlap": 1
+            },
+            {
+              "pathway_id": "R-RNO-191650",
+              "pvalue": 0.00636580352134919,
+              "p_adjust": 0.101852856341587,
+              "overlap": 1
+            }
+          ]
+        },
+        {
+          "family": "REACTOME",
+          "tier": "MEDIUM",
+          "mirna": "rno-miR-1-3p",
+          "n_targets": 18,
+          "top_pathways": [
+            {
+              "pathway_id": "R-RNO-1296061",
+              "pvalue": 3.67811789480467e-05,
+              "p_adjust": 0.007871172294882,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "R-RNO-114608",
+              "pvalue": 0.000120741378082264,
+              "p_adjust": 0.0089240428459056,
+              "overlap": 4
+            },
+            {
+              "pathway_id": "R-RNO-76005",
+              "pvalue": 0.000144661522970106,
+              "p_adjust": 0.0089240428459056,
+              "overlap": 4
+            },
+            {
+              "pathway_id": "R-RNO-1474151",
+              "pvalue": 0.000219023876076092,
+              "p_adjust": 0.0089240428459056,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "R-RNO-203615",
+              "pvalue": 0.000273366033600901,
+              "p_adjust": 0.0089240428459056,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "R-RNO-425561",
+              "pvalue": 0.000273366033600901,
+              "p_adjust": 0.0089240428459056,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "R-RNO-3371568",
+              "pvalue": 0.000333609078351611,
+              "p_adjust": 0.0089240428459056,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "R-RNO-418359",
+              "pvalue": 0.000333609078351611,
+              "p_adjust": 0.0089240428459056,
+              "overlap": 2
+            }
+          ]
+        },
+        {
+          "family": "REACTOME",
+          "tier": "LOW",
+          "mirna": "rno-miR-1-3p",
+          "n_targets": 353,
+          "top_pathways": [
+            {
+              "pathway_id": "R-RNO-194315",
+              "pvalue": 2.18327795562639e-08,
+              "p_adjust": 1.34056963047317e-05,
+              "overlap": 54
+            },
+            {
+              "pathway_id": "R-RNO-9012999",
+              "pvalue": 2.9302068425643e-08,
+              "p_adjust": 1.34056963047317e-05,
+              "overlap": 41
+            },
+            {
+              "pathway_id": "R-RNO-9716542",
+              "pvalue": 4.68004189052312e-08,
+              "p_adjust": 1.42741277660955e-05,
+              "overlap": 54
+            },
+            {
+              "pathway_id": "R-RNO-9006934",
+              "pvalue": 1.85125919454143e-07,
+              "p_adjust": 4.23475540751351e-05,
+              "overlap": 41
+            },
+            {
+              "pathway_id": "R-RNO-9013424",
+              "pvalue": 7.39173839257345e-07,
+              "p_adjust": 0.000135268812584094,
+              "overlap": 10
+            },
+            {
+              "pathway_id": "R-RNO-9013420",
+              "pvalue": 2.85311899648003e-06,
+              "p_adjust": 0.000435100646963205,
+              "overlap": 10
+            },
+            {
+              "pathway_id": "R-RNO-194138",
+              "pvalue": 1.23954624564637e-05,
+              "p_adjust": 0.0016202640210949,
+              "overlap": 15
+            },
+            {
+              "pathway_id": "R-RNO-162582",
+              "pvalue": 1.88534762663675e-05,
+              "p_adjust": 0.00215636634796579,
+              "overlap": 124
+            }
+          ]
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "tier": "HIGH",
+          "mirna": "rno-miR-1-3p",
+          "n_targets": 12,
+          "top_pathways": [
+            {
+              "pathway_id": "WP155",
+              "pvalue": 0.00144619362940991,
+              "p_adjust": 0.033262453476428,
+              "overlap": 4
+            },
+            {
+              "pathway_id": "WP282",
+              "pvalue": 0.0375910461877451,
+              "p_adjust": 0.193158620258805,
+              "overlap": 1
+            },
+            {
+              "pathway_id": "WP1963",
+              "pvalue": 0.0513504574848079,
+              "p_adjust": 0.193158620258805,
+              "overlap": 1
+            },
+            {
+              "pathway_id": "WP2433",
+              "pvalue": 0.0623438276418117,
+              "p_adjust": 0.193158620258805,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "WP469",
+              "pvalue": 0.0738826786859976,
+              "p_adjust": 0.193158620258805,
+              "overlap": 1
+            },
+            {
+              "pathway_id": "WP656",
+              "pvalue": 0.0915540615579301,
+              "p_adjust": 0.193158620258805,
+              "overlap": 1
+            },
+            {
+              "pathway_id": "WP173",
+              "pvalue": 0.0959233406205773,
+              "p_adjust": 0.193158620258805,
+              "overlap": 1
+            },
+            {
+              "pathway_id": "WP654",
+              "pvalue": 0.0959233406205773,
+              "p_adjust": 0.193158620258805,
+              "overlap": 1
+            }
+          ]
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "tier": "MEDIUM",
+          "mirna": "rno-miR-1-3p",
+          "n_targets": 14,
+          "top_pathways": [
+            {
+              "pathway_id": "WP155",
+              "pvalue": 0.00272696860790941,
+              "p_adjust": 0.0681742151977352,
+              "overlap": 4
+            },
+            {
+              "pathway_id": "WP3887",
+              "pvalue": 0.00866678039524387,
+              "p_adjust": 0.0834685471348782,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "WP160",
+              "pvalue": 0.0100162256561854,
+              "p_adjust": 0.0834685471348782,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "WP282",
+              "pvalue": 0.0437344750862727,
+              "p_adjust": 0.221915063967438,
+              "overlap": 1
+            },
+            {
+              "pathway_id": "WP1963",
+              "pvalue": 0.0596719048364802,
+              "p_adjust": 0.221915063967438,
+              "overlap": 1
+            },
+            {
+              "pathway_id": "WP2433",
+              "pvalue": 0.0822321483699046,
+              "p_adjust": 0.221915063967438,
+              "overlap": 2
+            },
+            {
+              "pathway_id": "WP469",
+              "pvalue": 0.0856872803992047,
+              "p_adjust": 0.221915063967438,
+              "overlap": 1
+            },
+            {
+              "pathway_id": "WP487",
+              "pvalue": 0.0908094805090131,
+              "p_adjust": 0.221915063967438,
+              "overlap": 1
+            }
+          ]
+        },
+        {
+          "family": "WIKIPATHWAYS",
+          "tier": "LOW",
+          "mirna": "rno-miR-1-3p",
+          "n_targets": 162,
+          "top_pathways": [
+            {
+              "pathway_id": "WP140",
+              "pvalue": 0.0135278507189215,
+              "p_adjust": 0.469433243324469,
+              "overlap": 15
+            },
+            {
+              "pathway_id": "WP442",
+              "pvalue": 0.016392383011815,
+              "p_adjust": 0.469433243324469,
+              "overlap": 4
+            },
+            {
+              "pathway_id": "WP94",
+              "pvalue": 0.0193796649511095,
+              "p_adjust": 0.469433243324469,
+              "overlap": 6
+            },
+            {
+              "pathway_id": "WP2433",
+              "pvalue": 0.021834104340673,
+              "p_adjust": 0.469433243324469,
+              "overlap": 11
+            },
+            {
+              "pathway_id": "WP529",
+              "pvalue": 0.0394087990545798,
+              "p_adjust": 0.665977091862393,
+              "overlap": 12
+            },
+            {
+              "pathway_id": "WP217",
+              "pvalue": 0.0510072291830324,
+              "p_adjust": 0.665977091862393,
+              "overlap": 5
+            },
+            {
+              "pathway_id": "WP3887",
+              "pvalue": 0.0818328257267181,
+              "p_adjust": 0.665977091862393,
+              "overlap": 4
+            },
+            {
+              "pathway_id": "WP282",
+              "pvalue": 0.0893534170357349,
+              "p_adjust": 0.665977091862393,
+              "overlap": 2
+            }
+          ]
+        }
+      ],
+      "organism_wall_s": 97.3
+    },
+    {
+      "organism": "mml",
+      "taxid": 9544,
+      "note": "no eligible new NATIVE families (e.g. macaque: no native Reactome / no WP collection, GO already exists). Macaque Reactome is provided INFERRED via run_macaque_inferred_reactome.py (orthology-projected).",
+      "families": [],
+      "cells": [],
+      "organism_wall_s": 0.0
+    }
+  ]
+}

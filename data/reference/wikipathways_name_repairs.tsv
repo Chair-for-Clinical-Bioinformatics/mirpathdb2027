@@ -1,0 +1,8 @@
+release	pathway_id	corrupt_name	display_name	source	source_sha256
+20260610	WP2059	Alzheimer 39 s disease and miRNA effects	Alzheimer's disease and miRNA effects	gpml:Hs_Alzheimer&#39;s_disease_and_miRNA_effects_WP2059_20250827.gpml	9270145f2fc796f8c99b218d4fdf46a2e44459931155cc0aa6f6fa869eb14202
+20260610	WP2371	Parkinson 39 s disease pathway	Parkinson's disease pathway	gpml:Hs_Parkinson&#39;s_disease_pathway_WP2371_20250325.gpml	9270145f2fc796f8c99b218d4fdf46a2e44459931155cc0aa6f6fa869eb14202
+20260610	WP3853	ERK pathway in Huntington 39 s disease	ERK pathway in Huntington's disease	gpml:Hs_ERK_pathway_in_Huntington&#39;s_disease_WP3853_20251120.gpml	9270145f2fc796f8c99b218d4fdf46a2e44459931155cc0aa6f6fa869eb14202
+20260610	WP5124	Alzheimer 39 s disease	Alzheimer's disease	gpml:Hs_Alzheimer&#39;s_disease_WP5124_20260131.gpml	9270145f2fc796f8c99b218d4fdf46a2e44459931155cc0aa6f6fa869eb14202
+20260610	WP5470	Effect of omega 3 PUFA on Huntington 39 s disease pathways	Effect of omega-3 PUFA on Huntington's disease pathways	gpml:Hs_Effect_of_omega-3_PUFA_on_Huntington&#39;s_disease_pathways_WP5470_20251120.gpml	9270145f2fc796f8c99b218d4fdf46a2e44459931155cc0aa6f6fa869eb14202
+20260610	WP2075	Alzheimer 39 s disease	Alzheimer's disease	gpml:Mm_Alzheimer&#39;s_disease_WP2075_20210507.gpml	714c23facc4838d37a328aade16b57a70be8776821bb7fcafb16bfbc8e48a177
+20260610	WP3638	Parkinson 39 s disease	Parkinson's disease	gpml:Mm_Parkinson&#39;s_disease_WP3638_20250308.gpml	714c23facc4838d37a328aade16b57a70be8776821bb7fcafb16bfbc8e48a177

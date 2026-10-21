@@ -1,0 +1,367 @@
+{
+  "last_run_wall_s": 2058.9,
+  "last_run_organisms": [
+    "hsa",
+    "mmu"
+  ],
+  "hsa_wall_s": 2058.9,
+  "mmu_wall_s": 127.1,
+  "n_cells": 19,
+  "note": "hsa wall is dominated by the one-time 72GB GeneTrail2 TERM2GENE decompression pass (~1454s); the 10 enrichment cells themselves total ~530s. mmu (136MB tarball) full run = ~127s.",
+  "cells": [
+    {
+      "organism": "mmu",
+      "variant": "validated_miRTarBase_strong",
+      "family": "GO_BP",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 27,
+      "n_pathways": 1061,
+      "n_universe": 301,
+      "n_terms_t2g": 1061,
+      "n_terms_matched": 1061,
+      "elapsed_s": 7.1,
+      "output": "data/processed/enrichment/mmu/GO_BP_validated_miRTarBase_strong.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "27"
+      }
+    },
+    {
+      "organism": "mmu",
+      "variant": "validated_miRTarBase_strong",
+      "family": "GO_CC",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 28,
+      "n_pathways": 141,
+      "n_universe": 308,
+      "n_terms_t2g": 141,
+      "n_terms_matched": 141,
+      "elapsed_s": 5.77,
+      "output": "data/processed/enrichment/mmu/GO_CC_validated_miRTarBase_strong.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "28"
+      }
+    },
+    {
+      "organism": "mmu",
+      "variant": "validated_miRTarBase_strong",
+      "family": "GO_MF",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 28,
+      "n_pathways": 218,
+      "n_universe": 308,
+      "n_terms_t2g": 218,
+      "n_terms_matched": 218,
+      "elapsed_s": 5.81,
+      "output": "data/processed/enrichment/mmu/GO_MF_validated_miRTarBase_strong.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "28"
+      }
+    },
+    {
+      "organism": "mmu",
+      "variant": "validated_miRTarBase_strong",
+      "family": "WIKIPATHWAYS",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 252,
+      "n_pathways": 154,
+      "n_universe": 788,
+      "n_terms_t2g": 154,
+      "n_terms_matched": 154,
+      "elapsed_s": 7.62,
+      "output": "data/processed/enrichment/mmu/WIKIPATHWAYS_validated_miRTarBase_strong.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "252"
+      }
+    },
+    {
+      "organism": "mmu",
+      "variant": "validated_miRTarBase_all",
+      "family": "GO_BP",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 415,
+      "n_pathways": 2829,
+      "n_universe": 7353,
+      "n_terms_t2g": 2829,
+      "n_terms_matched": 2829,
+      "elapsed_s": 9.41,
+      "output": "data/processed/enrichment/mmu/GO_BP_validated_miRTarBase_all.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "415"
+      }
+    },
+    {
+      "organism": "mmu",
+      "variant": "validated_miRTarBase_all",
+      "family": "GO_CC",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 417,
+      "n_pathways": 327,
+      "n_universe": 7361,
+      "n_terms_t2g": 327,
+      "n_terms_matched": 327,
+      "elapsed_s": 8.48,
+      "output": "data/processed/enrichment/mmu/GO_CC_validated_miRTarBase_all.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "417"
+      }
+    },
+    {
+      "organism": "mmu",
+      "variant": "validated_miRTarBase_all",
+      "family": "GO_MF",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 411,
+      "n_pathways": 537,
+      "n_universe": 7356,
+      "n_terms_t2g": 537,
+      "n_terms_matched": 537,
+      "elapsed_s": 8.24,
+      "output": "data/processed/enrichment/mmu/GO_MF_validated_miRTarBase_all.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "411"
+      }
+    },
+    {
+      "organism": "mmu",
+      "variant": "validated_miRTarBase_all",
+      "family": "WIKIPATHWAYS",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 771,
+      "n_pathways": 182,
+      "n_universe": 7630,
+      "n_terms_t2g": 182,
+      "n_terms_matched": 182,
+      "elapsed_s": 8.58,
+      "output": "data/processed/enrichment/mmu/WIKIPATHWAYS_validated_miRTarBase_all.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "771"
+      }
+    },
+    {
+      "organism": "mmu",
+      "variant": "validated_miRTarBase_strong",
+      "family": "GO_MF",
+      "universe_choice": "term2gene_union",
+      "sensitivity": true,
+      "n_mirnas": 28,
+      "n_pathways": 218,
+      "n_universe": 18,
+      "elapsed_s": 6.04,
+      "output": "data/processed/enrichment/mmu/GO_MF_validated_miRTarBase_strong.SENS_term2gene_union.csv"
+    },
+    {
+      "organism": "hsa",
+      "variant": "validated_miRTarBase_strong",
+      "family": "GO_BP",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 517,
+      "n_pathways": 4831,
+      "n_universe": 2678,
+      "n_terms_t2g": 4831,
+      "n_terms_matched": 4831,
+      "elapsed_s": 24.59,
+      "output": "data/processed/enrichment/hsa/GO_BP_validated_miRTarBase_strong.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "517"
+      }
+    },
+    {
+      "organism": "hsa",
+      "variant": "validated_miRTarBase_strong",
+      "family": "GO_CC",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 518,
+      "n_pathways": 464,
+      "n_universe": 2680,
+      "n_terms_t2g": 464,
+      "n_terms_matched": 464,
+      "elapsed_s": 10.63,
+      "output": "data/processed/enrichment/hsa/GO_CC_validated_miRTarBase_strong.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "518"
+      }
+    },
+    {
+      "organism": "hsa",
+      "variant": "validated_miRTarBase_strong",
+      "family": "GO_MF",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 517,
+      "n_pathways": 702,
+      "n_universe": 2678,
+      "n_terms_t2g": 702,
+      "n_terms_matched": 702,
+      "elapsed_s": 11.04,
+      "output": "data/processed/enrichment/hsa/GO_MF_validated_miRTarBase_strong.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "517"
+      }
+    },
+    {
+      "organism": "hsa",
+      "variant": "validated_miRTarBase_strong",
+      "family": "REACTOME",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 439,
+      "n_pathways": 1149,
+      "n_universe": 2628,
+      "n_terms_t2g": 1149,
+      "n_terms_matched": 1149,
+      "elapsed_s": 9.87,
+      "output": "data/processed/enrichment/hsa/REACTOME_validated_miRTarBase_strong.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "439"
+      }
+    },
+    {
+      "organism": "hsa",
+      "variant": "validated_miRTarBase_strong",
+      "family": "WIKIPATHWAYS",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 363,
+      "n_pathways": 399,
+      "n_universe": 2576,
+      "n_terms_t2g": 399,
+      "n_terms_matched": 399,
+      "elapsed_s": 8.45,
+      "output": "data/processed/enrichment/hsa/WIKIPATHWAYS_validated_miRTarBase_strong.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "363"
+      }
+    },
+    {
+      "organism": "hsa",
+      "variant": "validated_miRTarBase_all",
+      "family": "GO_BP",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 2547,
+      "n_pathways": 8122,
+      "n_universe": 15922,
+      "n_terms_t2g": 8122,
+      "n_terms_matched": 8122,
+      "elapsed_s": 290.69,
+      "output": "data/processed/enrichment/hsa/GO_BP_validated_miRTarBase_all.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "2547"
+      }
+    },
+    {
+      "organism": "hsa",
+      "variant": "validated_miRTarBase_all",
+      "family": "GO_CC",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 2548,
+      "n_pathways": 1097,
+      "n_universe": 15922,
+      "n_terms_t2g": 1097,
+      "n_terms_matched": 1097,
+      "elapsed_s": 54.81,
+      "output": "data/processed/enrichment/hsa/GO_CC_validated_miRTarBase_all.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "2548"
+      }
+    },
+    {
+      "organism": "hsa",
+      "variant": "validated_miRTarBase_all",
+      "family": "GO_MF",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 2547,
+      "n_pathways": 1796,
+      "n_universe": 15922,
+      "n_terms_t2g": 1796,
+      "n_terms_matched": 1796,
+      "elapsed_s": 53.73,
+      "output": "data/processed/enrichment/hsa/GO_MF_validated_miRTarBase_all.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "2547"
+      }
+    },
+    {
+      "organism": "hsa",
+      "variant": "validated_miRTarBase_all",
+      "family": "REACTOME",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 2535,
+      "n_pathways": 1869,
+      "n_universe": 15922,
+      "n_terms_t2g": 1869,
+      "n_terms_matched": 1869,
+      "elapsed_s": 48.03,
+      "output": "data/processed/enrichment/hsa/REACTOME_validated_miRTarBase_all.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "2535"
+      }
+    },
+    {
+      "organism": "hsa",
+      "variant": "validated_miRTarBase_all",
+      "family": "WIKIPATHWAYS",
+      "universe_choice": "mirtarbase_union",
+      "n_mirnas": 2446,
+      "n_pathways": 498,
+      "n_universe": 15919,
+      "n_terms_t2g": 498,
+      "n_terms_matched": 498,
+      "elapsed_s": 18.85,
+      "output": "data/processed/enrichment/hsa/WIKIPATHWAYS_validated_miRTarBase_all.csv",
+      "provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "n_gene_sets": "2446"
+      }
+    }
+  ]
+}

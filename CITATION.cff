@@ -1,0 +1,34 @@
+# Citation metadata in the Citation File Format 1.2.0 (https://citation-file-format.github.io).
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite it with the metadata below, together with the
+  miRPathDB 2027 article in Nucleic Acids Research, which describes the database whose tables it computes.
+title: "miRPathDB 2027: pipeline of release v2027.1"
+type: software
+authors:
+  - given-names: Matthias
+    family-names: Flotho
+    affiliation: "Chair for Clinical Bioinformatics, Saarland University"
+  - given-names: Shusruto
+    family-names: Rishik
+    affiliation: "Chair for Clinical Bioinformatics, Saarland University"
+  - given-names: Andreas
+    family-names: Keller
+    affiliation: "Chair for Clinical Bioinformatics, Saarland University"
+repository-code: "https://github.com/Chair-for-Clinical-Bioinformatics/mirpathdb2027"
+url: "https://web.ccb.uni-saarland.de/mirpathdb/"
+license: MIT
+version: "2027.1"
+commit: aeef54ba64aa818a04237fad837f9ae26b19ee69
+abstract: >-
+  The analysis pipeline of miRPathDB release 2027.1 (tag v2027.1): miRNA target genes from miRTarBase 9.0,
+  DIANA-TarBase v9, TargetScan 8 and miRDB 6.0 in cumulative High, Medium and Low evidence tiers, and
+  over-representation analysis of GO, Reactome and WikiPathways with clusterProfiler for human, mouse, rat
+  and rhesus macaque, with Benjamini-Hochberg adjustment over the full pathway family.
+keywords:
+  - microRNA
+  - miRNA target genes
+  - pathway enrichment
+  - over-representation analysis
+  - database
+  - reproducibility

@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mirpathdb_prod"
+version = "0.0.1"
+description = "miRPathDB 3.0 production database build (database-focused; GUI/webserver deferred)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "Keller Lab, Chair for Clinical Bioinformatics, Saarland University" },
+]
+dependencies = [
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
+# Numerical/validation stack for the controlled v2 reproduction + tolerance
+# report (clusterProfiler runs in a separate conda env `mpd_cp`; these are the
+# Python-side deps for matrix comparison, ORA cross-checks, and figures).
+validation = [
+    "numpy",
+    "scipy",
+    "pandas",
+    "openpyxl",          # read miRTarBase *_MTI.xlsx
+    "matplotlib",        # scatter / Bland-Altman figures
+    "statsmodels",       # BH-FDR multipletests
+    "gprofiler-official",  # secondary production-preview engine (g:Profiler)
+]
+
+[project.scripts]
+mirpathdb-prod = "mirpathdb_prod.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+# Verbatim copies of the build scripts that ran outside the repository (kept byte for byte;
+# scripts/execution/MANIFEST.tsv records their sha256).
+extend-exclude = ["scripts/execution"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# src/ layout: make the package importable in tests without an editable install
+# (keeps `pytest` runnable straight from a checkout / shared venv).
+pythonpath = ["src"]

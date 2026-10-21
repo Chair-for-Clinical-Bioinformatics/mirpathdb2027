@@ -1,0 +1,216 @@
+{
+  "build": "macaque_inferred_reactome_ora",
+  "inferred": true,
+  "note": "INFERRED macaque Reactome: human R-HSA- Reactome pathways projected to macaque via NCBI gene_orthologs 9606<->9544 strict 1:1 orthology, mapped to macaque SYMBOL (org.Mmu.eg.db), relabelled R-HSA-<n> -> R-MML-<n>. This replicates Reactome's OWN inference method for R-MML- (Reactome lists Macaca mulatta as orthology-inferred / no curated pathways). LIMITED + orthology-projected, NOT curated. Macaque GO matrices are NOT touched. WikiPathways remains NONE for macaque (no Macaca_mulatta collection).",
+  "organism": "mml",
+  "taxid": 9544,
+  "family": "REACTOME",
+  "matrix_naming": "data/processed/enrichment/mml/prod_REACTOME_<TIER>.csv",
+  "inferred_reactome_provenance": {
+    "inferred": "true",
+    "inference_method": "human R-HSA- Reactome projected to macaque via NCBI 1:1 orthology (replicates Reactome's R-MML- inference)",
+    "source_prefix": "R-HSA-",
+    "inferred_prefix": "R-MML-",
+    "reactome_db_version": "1.95.0",
+    "human_org_db_package": "org.Hs.eg.db",
+    "human_org_db_version": "3.22.0",
+    "macaque_org_db_package": "org.Mmu.eg.db",
+    "macaque_org_db_version": "3.22.0",
+    "r_version": "4.5.3",
+    "n_orthologs": "17586",
+    "n_human_pathways": "2820",
+    "n_inferred_pathways": "2777",
+    "n_pairs": "124149",
+    "ortholog_source": "{\"source\": \"NCBI Gene gene_orthologs.gz (ftp.ncbi.nlm.nih.gov/gene/DATA/)\", \"path\": \"/tmp/mpd-data/gene_orthologs.gz\", \"size_bytes\": \"122271540\", \"sha256\": \"c5ceb2da45219cfb0bd191f3f73dde2edcc98f4fb2e8c36b19509bdcf83c6483\", \"taxids\": \"9606<->9544 (one-to-one)\", \"ncbi_last_modified\": \"cached 2026-06-10 (NCBI gene_orthologs.gz; size+sha256 pinned)\"}"
+  },
+  "inferred_reactome_summary": {
+    "n_terms": 2777,
+    "n_genes": 10237,
+    "n_pairs": 124149
+  },
+  "target_set_census": {
+    "HIGH": {
+      "n_mirnas": 1,
+      "n_genes": 1,
+      "n_pairs": 1
+    },
+    "MEDIUM": {
+      "n_mirnas": 0,
+      "n_genes": 0,
+      "n_pairs": 0
+    },
+    "LOW": {
+      "n_mirnas": 293,
+      "n_genes": 12148,
+      "n_pairs": 179142
+    }
+  },
+  "per_source_census": {
+    "diana_tarbase": {
+      "n_rows": 1,
+      "n_mirnas_high": 1,
+      "n_mirnas_medium": 0,
+      "tier_rule": "HIGH = confidence==1 AND gene-specific assay (method not in CLIP_METHODS and not in KNOWN_OTHER_METHODS); else MEDIUM"
+    },
+    "targetscan": {
+      "n_rows": 201533,
+      "n_mirnas": 293
+    }
+  },
+  "symbol_normalization": {
+    "HIGH": {
+      "n_kept_pairs": 1,
+      "n_dropped_pairs": 0
+    },
+    "MEDIUM": {
+      "n_kept_pairs": 0,
+      "n_dropped_pairs": 0
+    },
+    "LOW": {
+      "n_kept_pairs": 102040,
+      "n_dropped_pairs": 77102
+    }
+  },
+  "tiers": [
+    "HIGH",
+    "MEDIUM",
+    "LOW"
+  ],
+  "cells": [
+    {
+      "organism": "mml",
+      "family": "REACTOME",
+      "inferred": true,
+      "tier": "HIGH",
+      "n_mirnas": 1,
+      "n_pathways_scored": 3,
+      "n_pathways_total": 2777,
+      "n_universe": 10237,
+      "n_significant_rows": 3,
+      "elapsed_s": 6.29,
+      "cp_provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "detected_cores": "128",
+        "n_gene_sets": "1",
+        "n_worker_errors": "0",
+        "worker_error_examples": ""
+      },
+      "output": "data/processed/enrichment/mml/prod_REACTOME_HIGH.csv",
+      "long_form_output": "data/processed/enrichment_significant/mml/REACTOME_HIGH.tsv"
+    },
+    {
+      "organism": "mml",
+      "family": "REACTOME",
+      "inferred": true,
+      "tier": "MEDIUM",
+      "n_mirnas": 1,
+      "n_pathways_scored": 3,
+      "n_pathways_total": 2777,
+      "n_universe": 10237,
+      "n_significant_rows": 3,
+      "elapsed_s": 6.55,
+      "cp_provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "detected_cores": "128",
+        "n_gene_sets": "1",
+        "n_worker_errors": "0",
+        "worker_error_examples": ""
+      },
+      "output": "data/processed/enrichment/mml/prod_REACTOME_MEDIUM.csv",
+      "long_form_output": "data/processed/enrichment_significant/mml/REACTOME_MEDIUM.tsv"
+    },
+    {
+      "organism": "mml",
+      "family": "REACTOME",
+      "inferred": true,
+      "tier": "LOW",
+      "n_mirnas": 293,
+      "n_pathways_scored": 2642,
+      "n_pathways_total": 2777,
+      "n_universe": 10237,
+      "n_significant_rows": 32157,
+      "elapsed_s": 21.39,
+      "cp_provenance": {
+        "clusterprofiler_version": "4.18.4",
+        "r_version": "4.5.3",
+        "mc_cores": "96",
+        "detected_cores": "128",
+        "n_gene_sets": "293",
+        "n_worker_errors": "0",
+        "worker_error_examples": ""
+      },
+      "output": "data/processed/enrichment/mml/prod_REACTOME_LOW.csv",
+      "long_form_output": "data/processed/enrichment_significant/mml/REACTOME_LOW.tsv"
+    }
+  ],
+  "sanity": [
+    {
+      "tier": "LOW",
+      "mirna": "mml-let-7a-5p",
+      "n_targets": 669,
+      "top_pathways": [
+        {
+          "pathway_id": "R-MML-2022090",
+          "pathway_name": "Assembly of collagen fibrils and other multimeric structures",
+          "pvalue": 3.86351941115517e-08,
+          "p_adjust": 6.36707998958372e-05,
+          "overlap": 17
+        },
+        {
+          "pathway_id": "R-MML-8948216",
+          "pathway_name": "Collagen chain trimerization",
+          "pvalue": 1.06947131821873e-07,
+          "p_adjust": 8.8124436621223e-05,
+          "overlap": 14
+        },
+        {
+          "pathway_id": "R-MML-1474290",
+          "pathway_name": "Collagen formation",
+          "pvalue": 2.49958978501136e-07,
+          "p_adjust": 0.000137310798856624,
+          "overlap": 20
+        },
+        {
+          "pathway_id": "R-MML-1650814",
+          "pathway_name": "Collagen biosynthesis and modifying enzymes",
+          "pvalue": 3.49810057127496e-07,
+          "p_adjust": 0.000144121743536529,
+          "overlap": 17
+        },
+        {
+          "pathway_id": "R-MML-9006934",
+          "pathway_name": "Signaling by Receptor Tyrosine Kinases",
+          "pvalue": 8.22747266583339e-07,
+          "p_adjust": 0.000271177499065868,
+          "overlap": 64
+        },
+        {
+          "pathway_id": "R-MML-162582",
+          "pathway_name": "Signal Transduction",
+          "pvalue": 1.07299789964255e-06,
+          "p_adjust": 0.000294716756435152,
+          "overlap": 213
+        },
+        {
+          "pathway_id": "R-MML-2243919",
+          "pathway_name": "Crosslinking of collagen fibrils",
+          "pvalue": 7.76149020569603e-06,
+          "p_adjust": 0.00182727655128386,
+          "overlap": 8
+        },
+        {
+          "pathway_id": "R-MML-1566977",
+          "pathway_name": "Fibronectin matrix formation",
+          "pvalue": 3.35288465943309e-05,
+          "p_adjust": 0.00651481779365172,
+          "overlap": 7
+        }
+      ]
+    }
+  ],
+  "wall_s": 136.0
+}

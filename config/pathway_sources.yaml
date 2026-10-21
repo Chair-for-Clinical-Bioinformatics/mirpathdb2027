@@ -1,0 +1,107 @@
+# miRPathDB 3.0 — pathway-source registry (machine-readable).
+#
+# Mirrors docs/pathway_sources.md. Read by
+# src/mirpathdb_prod/pathways/registry.py. This is a SEPARATE config from the
+# root config.yaml on purpose: it is a source registry, not build paths /
+# organisms. Each entry carries id, role, provenance (source/version/retrieval),
+# and license + redistribution flag so the published-DB decision is auditable.
+#
+# Roles:
+#   primary           -> shipped in the published DB; the default pathway source.
+#   optional_licensed -> NOT shipped in the published DB (redistribution gate);
+#                        user-runnable in the open pipeline if they hold a license.
+#   evaluate          -> candidate for v1; flagged for Tuesday sign-off.
+#
+# The whole pipeline is to be RELEASED so others can reproduce it (including
+# KEGG, if they hold a license).
+
+version: 1
+
+pathway_sources:
+  - id: go
+    name: Gene Ontology
+    role: primary
+    redistribution: allowed              # GO is CC-BY 4.0 — freely redistributable
+    license: CC-BY-4.0
+    description: >-
+      PRIMARY pathway source. GO terms (BP/MF/CC) via clusterProfiler against the
+      per-organism org.*.eg.db annotation packages and via g:Profiler (GO:BP).
+    provenance:
+      source: Gene Ontology / Bioconductor org.*.eg.db
+      version: "org.*.eg.db 3.22.0; GO.db 3.22.0; R 4.5.3"
+      retrieval: bioconductor            # versioned annotation packages, not a live URL
+    notes: >-
+      Version is pinned per the enrichment provenance requirement (see
+      docs/enrichment.md): clusterProfiler + each org.*.eg.db version, and the
+      archived g:Profiler datasource DB version.
+
+  - id: kegg
+    name: KEGG PATHWAY
+    role: optional_licensed
+    redistribution: blocked              # REDISTRIBUTION GATE — license-restricted
+    license: KEGG-academic-restricted
+    description: >-
+      EXCLUDED from the published DB due to KEGG redistribution terms. Kept as an
+      OPTIONAL, license-gated, USER-RUNNABLE source: a license-holder can add KEGG
+      via the open pipeline. The released pipeline ships the hooks but no KEGG data.
+    provenance:
+      source: KEGG REST (list_pathway + gene links)
+      version: "not pinned — license-gated, user-supplied at build"
+      retrieval: kegg_rest
+    notes: >-
+      Redistribution gate: a public bundle MUST NOT include KEGG data while the
+      license entry is restricted (mirrors the prototype's Gate 0). Documented,
+      not silently dropped.
+
+  - id: reactome
+    name: Reactome
+    role: evaluate
+    redistribution: allowed              # Reactome is CC0 — freely redistributable
+    license: CC0
+    description: >-
+      EVALUATE for v1 (flagged for Tuesday). Freely redistributable; a strong
+      candidate to complement GO without KEGG's license constraints.
+    provenance:
+      source: Reactome (Ensembl2Reactome_All_Levels.txt)
+      version: "reactome.db 1.95.0; Ensembl2Reactome_All_Levels.txt (Last-Modified 2026-03-23); R 4.5.3"
+      retrieval: reactome_download
+    organism_coverage:
+      # Native (curated) Reactome: hsa/mmu/rno. Macaque gets INFERRED Reactome.
+      hsa: native
+      mmu: native
+      rno: native
+      mml: inferred             # orthology-projected from human R-HSA- -> R-MML-
+    notes: >-
+      Flag for Tuesday — decide whether Reactome ships in v1. Macaque (mml) has NO
+      curated Reactome (0 R-MML- in reactome.db / Ensembl2Reactome), so macaque
+      Reactome is built INFERRED: human R-HSA- pathway gene sets projected to
+      macaque via NCBI gene_orthologs 9606<->9544 (1:1), mapped to macaque SYMBOL
+      (org.Mmu.eg.db), relabelled R-MML-<n>. This replicates Reactome's OWN
+      orthology-inference for R-MML- (Reactome lists Macaca mulatta as inferred-
+      only). LIMITED + orthology-projected, marked inferred; ortholog source pinned
+      (size + sha256) in provenance/macaque_inferred_reactome_manifest.json.
+
+  - id: wikipathways
+    name: WikiPathways
+    role: evaluate
+    redistribution: allowed              # WikiPathways is CC0 — freely redistributable
+    license: CC0
+    description: >-
+      EVALUATE for v1 (flagged for Tuesday). Community-curated, freely
+      redistributable; candidate complementary source.
+    provenance:
+      source: WikiPathways (GMT / monthly release)
+      version: "WikiPathways release 20260610; R 4.5.3"
+      retrieval: wikipathways_download
+    organism_coverage:
+      # WikiPathways covers hsa/mmu/rno. Macaque has NO collection at all.
+      hsa: native
+      mmu: native
+      rno: native
+      mml: none                # no Macaca_mulatta GMT; not in rWikiPathways::listOrganisms
+    notes: >-
+      Flag for Tuesday — decide whether WikiPathways ships in v1. Macaque (mml) has
+      NO WikiPathways coverage: the monthly release ships no Macaca_mulatta GMT and
+      Macaca mulatta is not in rWikiPathways::listOrganisms. Unlike Reactome,
+      WikiPathways has no orthology-inference path, so macaque WikiPathways stays
+      NONE.
