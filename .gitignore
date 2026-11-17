@@ -1,0 +1,42 @@
+# Python bytecode and tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Build and packaging output
+*.egg-info/
+/build/
+/dist/
+
+# Local environments
+.venv/
+venv/
+.pixi/*
+!.pixi/config.toml
+.env
+
+# Host-specific overrides of config.yaml
+config.local.yaml
+
+# Source files and pipeline outputs (data/reference/ is tracked)
+/data/raw/*
+!/data/raw/.gitkeep
+/data/interim/*
+!/data/interim/.gitkeep
+/data/processed/*
+!/data/processed/.gitkeep
+
+# Regenerable run outputs
+/validation/go_propagation_sensitivity/
+tp_verify_results.json
+
+# R session files
+.Rhistory
+.RData
+
+# OS and editor files
+.DS_Store
+.vscode/
+.idea/
